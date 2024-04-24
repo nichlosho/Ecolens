@@ -14,6 +14,7 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
 
     public override initializeRoutes(): void {
         // ----------------------------------- GET -----------------------------------\\
+
         // localhost:3000/products
         // localhost:3000/products?category=eyeglasses&material=wood
         this.router.get(
@@ -64,38 +65,20 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
             }
         );
 
-        // localhost:3000/products/1
-        this.router.get(
-            '/:id',
-            async (req: Request, res: Response): Promise<void> => {
-                const productId = req.params.id;
-                try {
-                    const product = await this.model.getById(productId);
-                    if (!product) {
-                        res.status(404).json({ error: 'Product not found' });
-                    } else {
-                        res.json(product);
-                    }
-                } catch (error) {
-                    console.error('Error fetching product:', error);
-                    res.status(500).json({ error: 'Internal Server Error' });
-                }
-            }
-        );
-
         // ----------------------------------- POST -----------------------------------\\
+
         this.router.post('/', async (req: Request, res: Response) => {
             try {
                 const newProduct = req.body as IProduct;
                 const result = await this.model.insert(newProduct);
 
-                result
-                    ? res
-                          .status(201)
-                          .send(
-                              `Successfully created a new product with id ${result.insertedId}`
-                          )
-                    : res.status(500).send('Failed to create a new product.');
+                if (result) {
+                    res.status(201).send(
+                        `Successfully created a new product with result ${result}`
+                    );
+                } else {
+                    res.status(500).send('Failed to create new product');
+                }
             } catch (error) {
                 console.error(error);
                 res.status(400).send(error.message);
@@ -103,6 +86,7 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
         });
 
         // ----------------------------------- PUT -----------------------------------\\
+
         this.router.put('/:id', async (req: Request, res: Response) => {
             const id = req?.params?.['id'];
 
@@ -128,31 +112,24 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
         });
 
         // ----------------------------------- DELETE -----------------------------------\\
+
         this.router.delete('/:id', async (req: Request, res: Response) => {
             const id = req?.params?.['id'];
+            const query: IMongooseFilter = {
+                _id: new mongoose.Types.ObjectId(id),
+            };
 
             try {
-                const query: IMongooseFilter = {
-                    _id: new mongoose.Types.ObjectId(id),
-                };
                 const result = await this.model.delete(query);
 
-                if (result && result.deletedCount) {
+                if (result) {
                     res.status(202).send(
                         `Successfully removed Product with id ${id}`
                     );
-                } else if (!result) {
-                    res.status(400).send(
-                        `Failed to remove Product with id ${id}`
-                    );
-                } else if (!result.deletedCount) {
-                    res.status(404).send(
-                        `Product with id ${id} does not exist`
-                    );
                 }
             } catch (error) {
-                console.error(error.message);
-                res.status(400).send(error.message);
+                console.error('Error deleting product:', error);
+                res.status(500).send('Internal Server Error');
             }
         });
     }

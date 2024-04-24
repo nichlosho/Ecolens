@@ -2,7 +2,7 @@ import express, { Router } from 'express';
 import { IBaseRouter } from 'src/interfaces/IRouter';
 import { BaseModel } from 'src/models/BaseModel';
 
-export abstract class BaseModelRouter<T extends any> implements IBaseRouter {
+export abstract class BaseModelRouter<T> implements IBaseRouter {
     private _router: Router;
     public get router(): Router {
         return this._router;
