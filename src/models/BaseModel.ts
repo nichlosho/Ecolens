@@ -28,7 +28,7 @@ export abstract class BaseModel<T extends any> implements IModel {
             console.log(
                 '!!!!!!!!!!!!!!!!!!!! Connection Successful for ' +
                     this.collectionName +
-                    'Collections !!!!!!!!!!!!!!!!!!!!'
+                    ' Collection !!!!!!!!!!!!!!!!!!!!'
             );
         } catch (e) {
             console.error(e);
