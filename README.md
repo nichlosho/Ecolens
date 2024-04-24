@@ -11,7 +11,8 @@ Connect to mongoDb and edit `.env` file.
 ## Development server
 
 Run Scripts
-`npm run script` (Use this most of the time) -- runs both backend server and frontend
-`npm run build`
-`npm run start:backend`
-`npm run start:frontend`
+
+-   `npm run script` (Use this most of the time) -- runs both backend server and frontend
+-   `npm run build`
+-   `npm run start:backend`
+-   `npm run start:frontend`
