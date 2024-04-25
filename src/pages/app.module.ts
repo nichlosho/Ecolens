@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, NavbarComponent],
     imports: [BrowserModule, RouterModule.forRoot(routes)],
     providers: [],
     bootstrap: [AppComponent],

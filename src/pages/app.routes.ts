@@ -5,9 +5,11 @@ import { LandingComponent } from './landing/landing.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsComponent } from './products/products.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },
+    { path: 'signin', component: SignInComponent },
     { path: 'products', component: ProductsComponent },
     { path: 'cart', component: CartComponent },
     { path: 'products/details', component: ProductDetailsComponent },
