@@ -8,11 +8,14 @@ const mongoDBConnection = process.env.MongoDbConnectionString;
 try {
     new App(mongoDBConnection).expressApp.listen(port);
     console.log(
-        '------------------------------ Server is listing on port:' +
+        '------------- Server is listing on port:' +
             port +
-            '------------------------------'
+            ' -----------------------------'
     );
 } catch (error) {
-    console.error('!!!!!!!! Database connection failed', error + ' !!!!!!!!');
+    console.error(
+        '🛑 ------ !!!!!!!! Database connection failed',
+        error + ' !!!!!!!! ------ 🛑'
+    );
     process.exit();
 }

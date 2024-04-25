@@ -26,9 +26,9 @@ export abstract class BaseModel<T> implements IModel {
                 this.getSchema()
             );
             console.log(
-                '!!!!!!!!!!!!!!!!!!!! Connection Successful for ' +
+                '✅----------- Connection Successful for ' +
                     this.collectionName +
-                    ' Collection !!!!!!!!!!!!!!!!!!!!'
+                    ' Collection -----------✅'
             );
         } catch (e) {
             console.error(e);
