@@ -14,7 +14,7 @@ export class App {
     private _productRouter: ProductRouter;
     private _customerRouter: CustomerRouter;
     private _googleRouter: GoogleRouter;
-    private _googlePassportObj: GooglePassportObj;
+    private _googlePassportObj: GooglePassportObj; // keep until google auth is setup
 
     constructor(mongoDBConnection: string) {
         //this.googlePassportObj = new GooglePassportObj();
@@ -44,6 +44,9 @@ export class App {
         router.use('/auth/google', this._googleRouter.router);
 
         this.expressApp.use('/', router);
+
+        // validateAuth examples
+
         // router.get(
         //     '/app/list/:listId/count',
         //     this.validateAuth,
@@ -54,19 +57,7 @@ export class App {
         //     }
         // );
 
-        // router.post('/app/list/', async (req, res) => {
-        //     const id = crypto.randomBytes(16).toString('hex');
-        //     console.log(req.body);
-        //     var jsonObj = req.body;
-        //     jsonObj.listId = id;
-        //     try {
-        //         //await this.lists.model.create([jsonObj]);
-        //         res.send('{"id":"' + id + '"}');
-        //     } catch (e) {
-        //         console.error(e);
-        //         console.log('object creation failed');
-        //     }
-        // });
+        // Crypto examples
 
         // router.post('/app/list2/', async (req, res) => {
         //     const id = crypto.randomBytes(16).toString('hex');
