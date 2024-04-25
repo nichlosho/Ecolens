@@ -3,6 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4, Express, Node.js and Bootstrap
 
 -   https://getbootstrap.com/docs/5.3/getting-started/introduction/
+-   https://getbootstrap.com/docs/5.3/examples/
 
 ## Setup
 
