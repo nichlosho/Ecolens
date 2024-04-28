@@ -18,10 +18,8 @@ export class CustomerRouter extends BaseModelRouter<ICustomer> {
         this.router.get(
             '/',
             async (req: Request, res: Response): Promise<void> => {
-                console.log("inside function")
-                try{
-                    console.log('Firstname:', req.query)
-                    const {firstName,email} = req.query;
+                try {
+                    const { firstName, email } = req.query;
                     let filter: object = {};
                     if (firstName) {
                         filter = createCaseInsensitiveFilter(
@@ -37,16 +35,16 @@ export class CustomerRouter extends BaseModelRouter<ICustomer> {
                             email as string
                         );
                     }
-                   
+
                     const customer = await this.model.getDocuments(filter);
-                        res.json(customer);
+                    res.json(customer);
                 } catch (error) {
                     console.error('Error fetching customers:', error);
                     res.status(500).json({ error: 'Internal Server Error' });
                 }
             }
         );
-        
+
         // localhost:3000/customer/1
         this.router.get(
             '/:id',
@@ -66,8 +64,6 @@ export class CustomerRouter extends BaseModelRouter<ICustomer> {
             }
         );
 
-        
-                
         // ----------------------------------- POST -----------------------------------\\
         // ----------------------------------- PUT -----------------------------------\\
         // ----------------------------------- DELETE -----------------------------------\\
