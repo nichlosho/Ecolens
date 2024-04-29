@@ -40,5 +40,4 @@ testem.log
 Thumbs.db
 
 # Ignore environment files
-/environments/environment.ts
-/environments/environment.prod.ts
+/environments
