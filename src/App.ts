@@ -21,7 +21,7 @@ export class App {
         //this.googlePassportObj = new GooglePassportObj();
         this.expressApp = express();
         this.expressApp.use(cors());
-        this.middleware();
+        this.configExpressMiddleware();
         this.initializeRouters(mongoDBConnection);
     }
 
@@ -76,8 +76,7 @@ export class App {
         //     }
         // });
     }
-    // Configure Express middleware.
-    private middleware(): void {
+    private configExpressMiddleware(): void {
         this.expressApp.use(bodyParser.json());
         this.expressApp.use(bodyParser.urlencoded({ extended: false }));
         this.expressApp.use((req, res, next) => {
