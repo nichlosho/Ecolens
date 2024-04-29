@@ -1,5 +1,6 @@
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
@@ -19,6 +20,7 @@ export class App {
     constructor(mongoDBConnection: string) {
         //this.googlePassportObj = new GooglePassportObj();
         this.expressApp = express();
+        this.expressApp.use(cors());
         this.middleware();
         this.initializeRouters(mongoDBConnection);
     }

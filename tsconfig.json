@@ -19,7 +19,8 @@
         "module": "es2022",
         "useDefineForClassFields": false,
         "lib": ["es2022", "dom"],
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "resolveJsonModule": true
     },
     "exclude": ["node_modules", "**/node_modules/*"],
     "angularCompilerOptions": {

@@ -1,15 +1,13 @@
-import dotenv from 'dotenv';
+import { environment } from 'environments/environment';
 import { App } from 'src/App';
-dotenv.config();
-
-const port = process.env.BACKEND_PORT || 3000;
-const mongoDBConnection = process.env.MongoDbConnectionString;
 
 try {
-    new App(mongoDBConnection).expressApp.listen(port);
+    new App(environment.mongoDBConnection).expressApp.listen(
+        environment.backendPort
+    );
     console.log(
         '------------- Server is listing on port:' +
-            port +
+            environment.backendPort +
             ' -----------------------------'
     );
 } catch (error) {

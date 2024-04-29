@@ -30,15 +30,18 @@
     "bootstrap": "^5.3.3",
     "bottleneck": "^2.19.5",
     "chart.js": "^3.3.2",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "crypto-browserify": "^3.12.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.2",
+    "os-browserify": "^0.3.0",
     "passport": "^0.7.0",
     "passport-google-oauth20-with-people-api": "^2.0.0",
-    "express-session": "^1.18.0",
-    "cookie-parser": "^1.4.6"
+    "path-browserify": "^1.0.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.5",
@@ -64,5 +67,21 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.7.2",
     "typescript": "~5.2.2"
+  },
+  "browser" : {
+    "fs": false,
+    "os": false,
+    "path": false,
+    "crypto": false,
+    "stream-browserify": false,
+    "stream": false,
+    "url": false,
+    "util": false,
+    "http":false,
+    "timers": false,
+    "zlib": false,
+    "process": false,
+    "querystring-es3": false,
+    "querystring": false
   }
 }
