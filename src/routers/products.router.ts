@@ -37,7 +37,7 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
                             material as string
                         );
                     }
-                    const products = await this.model.getDocuments(filter);
+                    const products = await this.model.find(filter);
                     res.json(products);
                 } catch (error) {
                     console.error('Error fetching products:', error);
@@ -52,7 +52,7 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
             async (req: Request, res: Response): Promise<void> => {
                 const productId = req.params.id;
                 try {
-                    const product = await this.model.getById(productId);
+                    const product = await this.model.findById(productId);
                     if (!product) {
                         res.status(404).json({ error: 'Product not found' });
                     } else {
@@ -70,7 +70,7 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
         this.router.post('/', async (req: Request, res: Response) => {
             try {
                 const newProduct = req.body as IProduct;
-                const result = await this.model.insert(newProduct);
+                const result = await this.model.insertMany(newProduct);
 
                 if (result) {
                     res.status(201).send(

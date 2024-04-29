@@ -36,7 +36,7 @@ export class CustomerRouter extends BaseModelRouter<ICustomer> {
                         );
                     }
 
-                    const customer = await this.model.getDocuments(filter);
+                    const customer = await this.model.find(filter);
                     res.json(customer);
                 } catch (error) {
                     console.error('Error fetching customers:', error);
@@ -51,7 +51,7 @@ export class CustomerRouter extends BaseModelRouter<ICustomer> {
             async (req: Request, res: Response): Promise<void> => {
                 const customerId = req.params.id;
                 try {
-                    const customer = await this.model.getById(customerId);
+                    const customer = await this.model.findById(customerId);
                     if (!customer) {
                         res.status(404).json({ error: 'customer not found' });
                     } else {

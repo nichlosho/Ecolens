@@ -36,8 +36,9 @@ export abstract class BaseModel<T> implements IModel {
     }
 
     // ---------------------------------- Public Interfaces ----------------------------------//
+
     // ----------------------------------- GET -----------------------------------\\
-    public async getDocuments(filter?: object): Promise<T[]> {
+    public async find(filter?: object): Promise<T[]> {
         // fix to return
         const query = this.model.find(filter);
         try {
@@ -47,7 +48,7 @@ export abstract class BaseModel<T> implements IModel {
             return [];
         }
     }
-    public async getById(id: string): Promise<T | null> {
+    public async findById(id: string): Promise<T | null> {
         const query = this.model.findById(id);
         try {
             const item: T = await query.exec();
@@ -58,7 +59,7 @@ export abstract class BaseModel<T> implements IModel {
         }
     }
     // ----------------------------------- POST -----------------------------------\\
-    public async insert(item: T[] | T): Promise<unknown> {
+    public async insertMany(item: T[] | T): Promise<unknown> {
         try {
             return await this.model.insertMany(
                 Array.isArray(item) ? item : [item]
