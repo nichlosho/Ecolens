@@ -1,7 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-.container {
-    max-width: 960px;
-  }
   
   /*
    * Custom translucent site header
@@ -13,11 +10,12 @@
     backdrop-filter: saturate(180%) blur(20px);
   }
   .site-header a {
-    color: #999;
+    color: gray;
+    font-size: large;
     transition: ease-in-out color .15s;
   }
   .site-header a:hover {
-    color: #fff;
+    color: #407dc2;
     text-decoration: none;
   }
   
