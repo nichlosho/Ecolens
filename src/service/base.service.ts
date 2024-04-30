@@ -5,7 +5,6 @@ import { environment } from 'environments/environment';
 
 @Injectable()
 export abstract class BaseService {
-    //t
     //----------------------------------------------------------------//
     //                           Properties
     //----------------------------------------------------------------//
