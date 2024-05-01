@@ -65,6 +65,25 @@ export class CustomerRouter extends BaseModelRouter<ICustomer> {
         );
 
         // ----------------------------------- POST -----------------------------------\\
+
+        this.router.post('/', async (req: Request, res: Response) => {
+            try {
+                const newCustomer = req.body as ICustomer;
+                const result = await this.model.insertMany(newCustomer);
+
+                if (result) {
+                    res.status(201).send(
+                        `Successfully created a new customer with result ${result}`
+                    );
+                } else {
+                    res.status(500).send('Failed to create new customer');
+                }
+            } catch (error) {
+                console.error(error);
+                res.status(400).send(error.message);
+            }
+        });
+
         // ----------------------------------- PUT -----------------------------------\\
         // ----------------------------------- DELETE -----------------------------------\\
     }
