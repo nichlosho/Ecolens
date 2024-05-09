@@ -1,116 +1,58 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import Bottleneck from 'bottleneck';
 import { environment } from 'environments/environment';
+import { catchError, throwError } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export abstract class BaseService {
     //----------------------------------------------------------------//
     //                           Properties
     //----------------------------------------------------------------//
 
-    private static _apiService: AxiosInstance | null = null;
-    public static get apiService(): AxiosInstance {
-        if (BaseService._apiService == null) {
-            BaseService._apiService = axios.create({
-                baseURL: environment.baseUrl + environment.backendPort,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Cache-Control': 'no-cache',
-                },
-            });
-        }
-        return BaseService._apiService;
-    }
-    private static limiter = new Bottleneck({
-        maxConcurrent: 1, // Maximum number of requests to make concurrently
-        minTime: 1000, // Minimum time to wait between each request (in milliseconds)
-    });
+    private readonly baseUrl = environment.baseUrl + environment.backendPort;
+  private headers: HttpHeaders;
+      private readonly throttleTimeMs = 500;
 
+    constructor(private http: HttpClient) {
+        this.headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Cache-Control', 'no-cache');
+    }
+  
     //----------------------------------------------------------------//
-    //                           Protected
+    //                           Public
     //----------------------------------------------------------------//
-
-    protected static async fetchData<T>(url: string): Promise<T | null> {
-        try {
-            const response: AxiosResponse = await BaseService.limiter.schedule(
-                () => BaseService.apiService.get<T>(url)
-            );
-            const data = response.data;
-            return data;
-        } catch (error) {
-            if (error instanceof AxiosError && error.response != null) {
-                throw new Error(BaseService.getErrorMessage(error));
-            } else {
-                throw error;
-            }
-        }
-    }
-
-    protected static async postData<T>(
-        url: string,
-        data: unknown
-    ): Promise<T | null> {
-        try {
-            const response = await BaseService.apiService.post<T>(url, data);
-            return response.data;
-        } catch (error) {
-            if (error instanceof AxiosError && error.response != null) {
-                throw new Error(BaseService.getErrorMessage(error));
-            } else {
-                throw error;
-            }
-        }
-    }
-
-    protected static async putData<T>(
-        url: string,
-        data: unknown
-    ): Promise<T | null> {
-        try {
-            const response = await BaseService.apiService.put<T>(url, data);
-            return response.data;
-        } catch (error) {
-            if (error instanceof AxiosError && error.response != null) {
-                throw new Error(BaseService.getErrorMessage(error));
-            } else {
-                throw error;
-            }
-        }
-    }
-
-    protected static async deleteData<T>(url: string): Promise<T | null> {
-        try {
-            const response = await BaseService.apiService.delete<T>(url);
-            return response.data;
-        } catch (error) {
-            if (error instanceof AxiosError && error.response != null) {
-                throw JSON.stringify(error.response.data);
-            }
-        }
-        return null;
-    }
-
-    protected static async patchData<T>(
-        url: string,
-        data: unknown
-    ): Promise<T | null> {
-        try {
-            const response = await BaseService.apiService.patch<T>(url, data);
-            return response.data;
-        } catch (error) {
-            if (error instanceof AxiosError && error.response != null) {
-                console.error('Error patching data:', error.response.data);
-                throw new Error(BaseService.getErrorMessage(error));
-            } else throw error;
-        }
+  
+      public async get<T>(endpoint: string): Promise<T> {
+    await this.delay(this.throttleTimeMs);
+    return this.http.get<T>(`${this.baseUrl}/${endpoint}`, { headers: this.headers })
+      .pipe(
+        catchError((error) => {
+          return throwError(() => new Error('get enpoint: ' + endpoint + ' failed. ' + error))
+        })
+      )
+      .toPromise();
+  }
+  
+    public async post<T>(endpoint: string, data: T): Promise<T> {
+      await this.delay(this.throttleTimeMs);
+      return this.http.post<T>(`${this.baseUrl}/${endpoint}`, data, { headers: this.headers }).pipe(
+        catchError((error) => {
+          return throwError(() => new Error('post enpoint: ' + endpoint + ' failed. ' + error))
+        })
+      ).toPromise();
     }
 
     //----------------------------------------------------------------//
     //                           Private
     //----------------------------------------------------------------//
-
-    private static getErrorMessage(error: AxiosError): string {
-        return error.code + ': ' + error.message;
+    
+    private delay(ms: number): Promise<void> {
+      return new Promise<void>(resolve => setTimeout(resolve, ms));
     }
-}
+
+  }

@@ -6,32 +6,28 @@ import { BaseService } from './base.service';
 
 @Injectable()
 export class ProductService extends BaseService {
-    private static readonly endpoint = `/products`;
+    private  readonly endpoint = `products`;
 
-    constructor(private http: HttpClient) {
-        super();
-    }
-
-    public static async getProductDetails() {
+    public  async getProductDetails() {
         return;
     }
-    public static async getProductsByMaterialType(
+    public  async getProductsByMaterialType(
         materialType: MaterialType
     ): Promise<IProduct[]> {
         console.log(materialType);
         return [];
     }
-    public static async getProductsByPrescriptionType(
+    public  async getProductsByPrescriptionType(
         prescriptionType: PrescriptionType
     ): Promise<IProduct[]> {
         console.log(prescriptionType);
         return [];
     }
 
-    public static async getAllProducts(): Promise<IProduct[]> {
+    public async getAllProducts(): Promise<IProduct[]> {
         const url = `${this.endpoint}`;
         try {
-            const response = await ProductService.fetchData<IProduct[]>(url);
+            const response = await this.get<IProduct[]>(url);
             return response;
         } catch (error) {
             return [];

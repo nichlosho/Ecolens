@@ -41,7 +41,8 @@
     "os-browserify": "^0.3.0",
     "passport": "^0.7.0",
     "passport-google-oauth20-with-people-api": "^2.0.0",
-    "path-browserify": "^1.0.1"
+    "path-browserify": "^1.0.1",
+    "rxjs": "^7.8.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.5",
@@ -68,7 +69,7 @@
     "tsx": "^4.7.2",
     "typescript": "~5.2.2"
   },
-  "browser" : {
+  "browser": {
     "fs": false,
     "os": false,
     "path": false,
@@ -77,7 +78,7 @@
     "stream": false,
     "url": false,
     "util": false,
-    "http":false,
+    "http": false,
     "timers": false,
     "zlib": false,
     "process": false,

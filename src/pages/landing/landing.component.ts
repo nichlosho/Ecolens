@@ -9,9 +9,11 @@ import { ProductService } from 'src/service/product.service';
     styleUrl: './landing.component.scss',
 })
 export class LandingComponent implements OnInit {
+      constructor(private productService: ProductService) {}
     ngOnInit(): void {
-        ProductService.getAllProducts().then((value) => {
+        this.productService.getAllProducts().then((value) => {
             console.log(value);
         });
     }
 }
+ 
