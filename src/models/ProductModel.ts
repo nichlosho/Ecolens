@@ -17,7 +17,7 @@ export class ProductModel extends BaseModel<IProduct> {
                 inventoryStatus: String,
                 category: String,
                 glassesInfo: {
-                    frameMaterial: String,
+                    material: String,
                     prescriptionType: String,
                     frameColor: String,
                     lensColor: String,

@@ -12,7 +12,7 @@ export enum MaterialType {
 }
 
 export interface IGlassesInfo {
-    frameMaterial?: MaterialType;
+    material?: MaterialType;
     prescriptionType?: PrescriptionType;
     frameColor?: string;
     lensColor?: string;
