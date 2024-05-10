@@ -1,14 +1,14 @@
 {
     "name": "Ecolens",
     "version": "1.0.0",
-    "main": "./server.ts",
+    "main": "server.ts",
     "scripts": {
         "ng": "ng",
         "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
         "start:backend": "npx tsx server.ts",
         "start:frontend": "ng serve",
         "build": "npm run build:frontend && npm run build:backend",
-        "build:frontend": "ng build --prod",
+        "build:frontend": "ng build --configuration=production",
         "build:backend": "tsc -p tsconfig.prod.json",
         "test": "ng test",
         "lint": "ng lint",
