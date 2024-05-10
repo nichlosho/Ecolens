@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MaterialType, PrescriptionType } from 'src/interfaces/IGlassesInfo';
 import { IProduct } from 'src/interfaces/IProduct';
@@ -6,18 +5,18 @@ import { BaseService } from './base.service';
 
 @Injectable()
 export class ProductService extends BaseService {
-    private  readonly endpoint = `products`;
+    private readonly endpoint = `products`;
 
-    public  async getProductDetails() {
+    public async getProductDetails() {
         return;
     }
-    public  async getProductsByMaterialType(
+    public async getProductsByMaterialType(
         materialType: MaterialType
     ): Promise<IProduct[]> {
         console.log(materialType);
         return [];
     }
-    public  async getProductsByPrescriptionType(
+    public async getProductsByPrescriptionType(
         prescriptionType: PrescriptionType
     ): Promise<IProduct[]> {
         console.log(prescriptionType);

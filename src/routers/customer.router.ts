@@ -12,6 +12,7 @@ export class CustomerRouter extends BaseModelRouter<ICustomer> {
 
     public override initializeRoutes(): void {
         // ----------------------------------- GET -----------------------------------\\
+
         // localhost:3000/customers
         // localhost:3000/customers?firstName=Lisa&email=lisa@example.com
         // localhost:3000/customers?firstName=Lisa
