@@ -7,9 +7,7 @@
         "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
         "start:backend": "npx tsx server.ts",
         "start:frontend": "ng serve",
-        "build": "npm run build:frontend && npm run build:backend",
-        "build:frontend": "ng build --configuration=production",
-        "build:backend": "npx tsx server.ts",
+        "build": "ng build --configuration=production",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"

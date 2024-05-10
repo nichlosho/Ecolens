@@ -1,7 +1,7 @@
-import dotenv from 'dotenv';
-import express from 'express';
-import path from 'path';
-import { App } from 'src/App';
+import * as dotenv from 'dotenv';
+import * as express from 'express';
+import * as path from 'path';
+import { App } from './src/App';
 
 dotenv.config();
 
