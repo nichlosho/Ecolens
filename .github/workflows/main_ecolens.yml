@@ -28,11 +28,14 @@ jobs:
                   echo BACKEND_PORT=3000 >> .env
                   cat .env
 
-            - name: npm install, build, and test
-              run: |
-                  npm install
-                  npm run build:frontend --if-present
-                  npm run build:backend --if-present
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build frontend
+              run: npm run build:frontend
+
+            - name: Build backend
+              run: npm run build:backend
 
             - name: Upload artifact for deployment job
               uses: actions/upload-artifact@v3
