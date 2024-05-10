@@ -9,7 +9,7 @@
         "start:frontend": "ng serve",
         "build": "npm run build:frontend && npm run build:backend",
         "build:frontend": "ng build --configuration=production",
-        "build:backend": "tsc -p tsconfig.prod.json",
+        "build:backend": "npx tsx server.ts",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
@@ -43,6 +43,7 @@
         "os-browserify": "^0.3.0",
         "passport": "^0.7.0",
         "passport-google-oauth20-with-people-api": "^2.0.0",
+        "path": "^0.12.7",
         "path-browserify": "^1.0.1",
         "rxjs": "^7.8.1"
     },
