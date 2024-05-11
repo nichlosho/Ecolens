@@ -1,11 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'environments/environment';
 import { MaterialType, PrescriptionType } from 'src/interfaces/IGlassesInfo';
 import { IProduct } from 'src/interfaces/IProduct';
-import { BaseService } from './base.service';
+import { IService } from 'src/interfaces/IService';
 
 @Injectable()
-export class ProductService extends BaseService {
-    private readonly endpoint = `products`;
+export class ProductService implements IService {
+    public readonly baseUrl = environment.baseUrl + environment.backendPort;
+    public readonly endpoint = `products`;
+
+    constructor(private http: HttpClient) {}
 
     public async getProductDetails() {
         return;
@@ -24,9 +29,10 @@ export class ProductService extends BaseService {
     }
 
     public async getAllProducts(): Promise<IProduct[]> {
-        const url = `${this.endpoint}`;
         try {
-            const response = await this.get<IProduct[]>(url);
+            const response = await this.http
+                .get<IProduct[]>(`${this.baseUrl}/${this.endpoint}`)
+                .toPromise();
             return response;
         } catch (error) {
             return [];

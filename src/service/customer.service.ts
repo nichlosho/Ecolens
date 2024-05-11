@@ -1,10 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'environments/environment';
 import { ObjectId } from 'mongodb';
 import { ICustomer } from 'src/interfaces/ICustomer';
-import { BaseService } from './base.service';
+import { IService } from 'src/interfaces/IService';
 
 @Injectable()
-export class CustomerService extends BaseService {
+export class CustomerService implements IService {
+    public readonly baseUrl = environment.baseUrl + environment.backendPort;
+    public readonly endpoint = `/customer`;
+
+    constructor(private http: HttpClient) {}
+
     private static readonly endpoint = `/customers`;
 
     public static async addCustomer(customer: ICustomer): Promise<void> {

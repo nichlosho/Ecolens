@@ -1,10 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'environments/environment';
 import { ICart } from 'src/interfaces/ICart';
-import { BaseService } from './base.service';
+import { IService } from 'src/interfaces/IService';
 
 @Injectable()
-export class CartService extends BaseService {
-    private static readonly endpoint = `/cart`;
+export class CartService implements IService {
+    public readonly baseUrl = environment.baseUrl + environment.backendPort;
+    public readonly endpoint = `/cart`;
+
+    constructor(private http: HttpClient) {}
 
     private static _cart: ICart;
 
