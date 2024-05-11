@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduct } from 'src/interfaces/IProduct';
 import { ProductService } from '../../service/product.service';
 
 @Component({
@@ -6,17 +7,20 @@ import { ProductService } from '../../service/product.service';
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
 })
-export class ProductsComponent implements OnInit{
-    items = [];
+export class ProductsComponent implements OnInit {
+    public items: IProduct[] = [];
 
-    constructor(private productService: ProductService){}
+    constructor(private productService: ProductService) {}
 
     ngOnInit(): void {
-        this.productService.getAllProducts().then(data => {
-            this.items = data;
-        }).catch(error => {
-            console.error("Failed to fetch products", error);
-            this.items = []; // Handling error by setting items to an empty array
-          });
+        this.productService
+            .getAllProducts()
+            .then((data) => {
+                this.items = data;
+            })
+            .catch((error) => {
+                console.error('Failed to fetch products', error);
+                this.items = []; // Handling error by setting items to an empty array
+            });
     }
 }

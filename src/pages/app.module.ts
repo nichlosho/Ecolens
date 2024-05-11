@@ -1,6 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { RouterModule } from '@angular/router';
 import { ProductService } from 'src/service/product.service';
 import { AppComponent } from './app.component';
@@ -12,10 +16,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsComponent } from './products/products.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
     declarations: [
@@ -28,7 +28,14 @@ import { MatCardModule } from '@angular/material/card';
         NotFoundComponent,
         SignInComponent,
     ],
-    imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule, BrowserAnimationsModule, MatButtonModule, MatCardModule],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(routes),
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatCardModule,
+    ],
     providers: [ProductService, provideAnimationsAsync()],
     bootstrap: [AppComponent],
 })
