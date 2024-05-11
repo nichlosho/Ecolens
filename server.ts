@@ -8,7 +8,7 @@ dotenv.config();
 try {
     //const __dirname = path.resolve();
     const app = new App(process.env.MONGODB_CONNECTION_URL);
-    app.expressApp.listen(process.env.BACKEND_PORT || 3000);
+    app.expressApp.listen(process.env.BACKEND_PORT || 8080);
     console.log(
         '------------- Server is listening on port:' +
             process.env.BACKEND_PORT +
