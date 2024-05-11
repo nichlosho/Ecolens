@@ -1,11 +1,11 @@
 <div class="grid-container">
  <div *ngFor="let item of items" style="margin: 10px;" class="grid-item">
  <mat-card>
+    <img mat-card-image class="card-img" src= "{{item.image}}" alt="Photo of {{item.name}}">
     <mat-card-header>
-      <mat-card-title>{{item.name}}</mat-card-title>
-      <mat-card-subtitle>{{item.category}}</mat-card-subtitle>
+        <mat-card-title>{{item.name}}</mat-card-title>
+        <mat-card-subtitle>{{item.category}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="item.image" alt="Photo of {{item.name}}">
     <mat-card-content>
       <p>
         {{item.description}}
