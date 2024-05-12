@@ -2,13 +2,18 @@
     "name": "Ecolens",
     "version": "1.0.0",
     "main": "server.ts",
+    "keywords": [
+        "azure",
+        "boilerplate",
+        "express"
+    ],
     "scripts": {
         "ng": "ng",
         "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
         "start:backend": "npx tsx server.ts",
         "start:frontend": "ng serve",
         "build": "ng build --configuration=production",
-        "test": "ng test",
+        "test": "node node_modules/mocha/bin/_mocha --reporter spec --require ts-node/register src/tests/**/*.test.js",
         "lint": "ng lint",
         "e2e": "ng e2e"
     },
@@ -27,9 +32,13 @@
         "@angular/platform-server": "^17.3.0",
         "@angular/router": "^17.0.5",
         "@angular/ssr": "^17.3.5",
+        "assert": "*",
+        "async": "^2.6.4",
         "axios": "^1.6.8",
         "bootstrap": "^5.3.3",
         "bottleneck": "^2.19.5",
+        "chai": "^4.1.2",
+        "chai-http": "^4.0.0",
         "chart.js": "^3.3.2",
         "cookie-parser": "^1.4.6",
         "cors": "^2.8.5",
@@ -37,6 +46,7 @@
         "dotenv": "^16.4.5",
         "express": "^4.19.2",
         "express-session": "^1.18.0",
+        "mocha": "^10.4.0",
         "mongodb": "^6.5.0",
         "mongoose": "^8.3.2",
         "os-browserify": "^0.3.0",
@@ -44,6 +54,7 @@
         "passport-google-oauth20-with-people-api": "^2.0.0",
         "path": "^0.12.7",
         "path-browserify": "^1.0.1",
+        "q": "^1.5.1",
         "rxjs": "^7.8.1"
     },
     "devDependencies": {
