@@ -12,7 +12,7 @@
         "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
         "start:backend": "npx tsx src/server.ts",
         "start:frontend": "ng serve",
-        "build": "ng build --configuration=production",
+        "build": "ng build --configuration=production && tsc",
         "test": "node node_modules/mocha/bin/_mocha --reporter spec --require ts-node/register src/tests/**/*.test.js",
         "lint": "ng lint",
         "e2e": "ng e2e"
