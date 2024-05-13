@@ -18,7 +18,7 @@ export class App {
         this.expressApp.use(cors());
         this.configExpressMiddleware();
         this.initializeRouters(mongoDBConnection);
-        this.expressApp.use('/', express.static(__dirname + '/dist'));
+        this.expressApp.use('/', express.static(__dirname + '/dist/Ecolens'));
     }
 
     // Configure API endpoints.
