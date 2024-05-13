@@ -1,5 +1,5 @@
 import mongoose, { Model, Schema } from 'mongoose';
-import { IModel } from 'src/interfaces/IModel';
+import { IModel } from '../interfaces/IModel';
 
 export abstract class BaseModel<T> implements IModel {
     public get dbName(): string {

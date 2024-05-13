@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
-import { MaterialType, PrescriptionType } from 'src/interfaces/IGlassesInfo';
-import { IProduct } from 'src/interfaces/IProduct';
-import { IService } from 'src/interfaces/IService';
+import { environment } from '../../environments/environment';
+import { MaterialType, PrescriptionType } from '../interfaces/IGlassesInfo';
+import { IProduct } from '../interfaces/IProduct';
+import { IService } from '../interfaces/IService';
 
 @Injectable()
 export class ProductService implements IService {

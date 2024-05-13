@@ -1,6 +1,6 @@
 import { ObjectId } from 'mongodb';
 import { Schema } from 'mongoose';
-import { ICustomer } from 'src/interfaces/ICustomer';
+import { ICustomer } from '../interfaces/ICustomer';
 import { BaseModel } from './BaseModel';
 
 export class CustomerModel extends BaseModel<ICustomer> {

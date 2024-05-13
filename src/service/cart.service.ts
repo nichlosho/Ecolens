@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
-import { ICart } from 'src/interfaces/ICart';
-import { IService } from 'src/interfaces/IService';
+import { environment } from '../../environments/environment';
+import { ICart } from '../interfaces/ICart';
+import { IService } from '../interfaces/IService';
 
 @Injectable()
 export class CartService implements IService {

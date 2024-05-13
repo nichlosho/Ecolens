@@ -1,7 +1,7 @@
 {
     "name": "Ecolens",
     "version": "1.0.0",
-    "main": "server.ts",
+    "main": "src/server.ts",
     "keywords": [
         "azure",
         "boilerplate",
@@ -10,14 +10,14 @@
     "scripts": {
         "ng": "ng",
         "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
-        "start:backend": "npx tsx server.ts",
+        "start:backend": "npx tsx src/server.ts",
         "start:frontend": "ng serve",
         "build": "ng build --configuration=production",
         "test": "node node_modules/mocha/bin/_mocha --reporter spec --require ts-node/register src/tests/**/*.test.js",
         "lint": "ng lint",
         "e2e": "ng e2e"
     },
-    "type": "module",
+    "type": "commonjs",
     "private": true,
     "dependencies": {
         "@angular/animations": "^17.0.5",

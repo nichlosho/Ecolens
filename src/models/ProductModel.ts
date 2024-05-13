@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose';
-import { IProduct } from 'src/interfaces/IProduct';
+import { IProduct } from '../interfaces/IProduct';
 import { BaseModel } from './BaseModel';
 
 export class ProductModel extends BaseModel<IProduct> {

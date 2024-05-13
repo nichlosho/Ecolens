@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
-import { ObjectId } from 'mongodb';
-import { ICustomer } from 'src/interfaces/ICustomer';
-import { IService } from 'src/interfaces/IService';
+import { ObjectId } from 'mongoose';
+import { environment } from '../../environments/environment';
+import { ICustomer } from '../interfaces/ICustomer';
+import { IService } from '../interfaces/IService';
 
 @Injectable()
 export class CustomerService implements IService {

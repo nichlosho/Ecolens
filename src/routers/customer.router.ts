@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { createCaseInsensitiveFilter } from 'src/helper/collectionFilter';
-import { ICustomer } from 'src/interfaces/ICustomer';
-import { CustomerModel } from 'src/models/CustomerModel';
+import { createCaseInsensitiveFilter } from '../helper/collectionFilter';
+import { ICustomer } from '../interfaces/ICustomer';
+import { CustomerModel } from '../models/CustomerModel';
 import { BaseModelRouter } from './baseModel.router';
 
 export class CustomerRouter extends BaseModelRouter<ICustomer> {

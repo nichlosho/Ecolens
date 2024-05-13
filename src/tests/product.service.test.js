@@ -1,8 +1,13 @@
-import { expect, use } from "chai";
-import chaiHttp from "chai-http";
-const chai = use(chaiHttp);
+var chai = require("chai");
+var chaiHttp = require("chai-http");
+var async = require("async");
 
-chai.request();
+var assert = chai.assert;
+var expect = chai.expect;
+var should = chai.should();
+
+var http = require("http");
+chai.use(chaiHttp);
 
 describe("Test Get All Products API call result", function () {
     var requestResult;

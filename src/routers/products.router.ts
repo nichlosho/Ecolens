@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
-import { createCaseInsensitiveFilter } from 'src/helper/collectionFilter';
-import { IProduct } from 'src/interfaces/IProduct';
-import { IMongooseFilter } from 'src/models/BaseModel';
-import { ProductModel } from 'src/models/ProductModel';
+import { createCaseInsensitiveFilter } from '../helper/collectionFilter';
+import { IProduct } from '../interfaces/IProduct';
+import { IMongooseFilter } from '../models/BaseModel';
+import { ProductModel } from '../models/ProductModel';
 import { BaseModelRouter } from './baseModel.router';
 
 export class ProductRouter extends BaseModelRouter<IProduct> {

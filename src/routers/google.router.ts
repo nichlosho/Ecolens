@@ -1,13 +1,13 @@
-import express, { Router } from 'express';
+import * as express from 'express';
 import passport from 'passport';
-import { IBaseRouter } from 'src/interfaces/IRouter';
+import { IBaseRouter } from '../interfaces/IRouter';
 
 export class GoogleRouter implements IBaseRouter {
-    private _router: Router;
-    public get router(): Router {
+    private _router: express.Router;
+    public get router(): express.Router {
         return this._router;
     }
-    private set router(value: Router) {
+    private set router(value: express.Router) {
         this._router = value;
     }
 

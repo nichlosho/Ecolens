@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { RouterModule } from '@angular/router';
-import { ProductService } from 'src/service/product.service';
+import { ProductService } from '../service/product.service';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 import { CartComponent } from './cart/cart.component';
