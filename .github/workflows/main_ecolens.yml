@@ -16,20 +16,16 @@ jobs:
         steps:
             - name: Checkout code
             - uses: actions/checkout@v4
-
             - name: Set up Node.js version
               uses: actions/setup-node@v3
               with:
                   node-version: "18.x"
             - name: Install Dependencies
               run: npm install
-
             - name: Run build
               run: npm run build
-
             - name: Zip artifact for deployment
               run: zip -r release.zip dist/ecolens dist/out-tsc
-
             - name: Upload artifact for deployment job
               uses: actions/upload-artifact@v3
               with:
