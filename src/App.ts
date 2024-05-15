@@ -19,10 +19,10 @@ export class App {
         this.expressApp.use(cors());
         this.configExpressMiddleware();
         this.initializeRouters(mongoDBConnection);
-        this.expressApp.use('/', express.static(__dirname + '/dist/Ecolens'));
+        this.expressApp.use('/', express.static(__dirname + '/dist/ecolens'));
         // Wildcard Route catch all get
         this.expressApp.get('/*', (req, res) => {
-            res.sendFile(path.join(__dirname, '/dist/Ecolens/index.html'));
+            res.sendFile(path.join(__dirname, '/dist/ecolens/index.html'));
         });
     }
 

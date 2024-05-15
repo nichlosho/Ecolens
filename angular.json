@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/Ecolens",
+                        "outputPath": "dist/ecolens",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": ["zone.js"],
@@ -25,8 +25,8 @@
                         "inlineStyleLanguage": "scss",
                         "assets": ["src/favicon.ico", "src/assets"],
                         "styles": [
-                          "@angular/material/prebuilt-themes/deeppurple-amber.css",
-                          "src/styles.scss"
+                            "@angular/material/prebuilt-themes/deeppurple-amber.css",
+                            "src/styles.scss"
                         ],
                         "scripts": []
                     },
@@ -90,8 +90,8 @@
                         "inlineStyleLanguage": "scss",
                         "assets": ["src/favicon.ico", "src/assets"],
                         "styles": [
-                          "@angular/material/prebuilt-themes/deeppurple-amber.css",
-                          "src/styles.scss"
+                            "@angular/material/prebuilt-themes/deeppurple-amber.css",
+                            "src/styles.scss"
                         ],
                         "scripts": []
                     }
