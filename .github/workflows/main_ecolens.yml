@@ -67,4 +67,4 @@ jobs:
                   app-name: "Ecolens"
                   slot-name: "Production"
                   package: .
-                  start-command: "node dist/out-tsc/src/server.js"
+                  startup-command: "node dist/out-tsc/src/server.js"
