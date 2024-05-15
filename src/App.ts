@@ -3,7 +3,6 @@ import { CustomerRouter } from './routers/customer.router';
 import { ProductRouter } from './routers/products.router';
 import express = require('express');
 import cors = require('cors');
-import path = require('path');
 
 // Creates and configures an ExpressJS web server.
 export class App {
@@ -19,11 +18,11 @@ export class App {
         this.expressApp.use(cors());
         this.configExpressMiddleware();
         this.initializeRouters(mongoDBConnection);
-        this.expressApp.use('/', express.static(__dirname + 'dist/ecolens'));
-        // Wildcard Route catch all get
-        this.expressApp.get('/*', (req, res) => {
-            res.sendFile(path.join(__dirname, 'dist/ecolens/index.html'));
-        });
+        // this.expressApp.use('/', express.static(__dirname + 'dist/ecolens'));
+        // // Wildcard Route catch all get
+        // this.expressApp.get('/*', (req, res) => {
+        //     res.sendFile(path.join(__dirname, 'dist/ecolens/index.html'));
+        // });
     }
 
     // Configure API endpoints.
