@@ -24,7 +24,7 @@ jobs:
               run: npm run build
 
             - name: Zip artifact for deployment
-              run: zip -r release.zip dist/ecolens dist/out-tsc Procfile
+              run: zip -r release.zip dist/ Procfile
 
             - name: Deploy to Azure App Service
               uses: azure/webapps-deploy@v2
