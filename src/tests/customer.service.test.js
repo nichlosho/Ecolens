@@ -1,8 +1,13 @@
-import { expect, use } from "chai";
-import chaiHttp from "chai-http";
-const chai = use(chaiHttp);
+var chai = require("chai");
+var chaiHttp = require("chai-http");
+var async = require("async");
 
-chai.request();
+var assert = chai.assert;
+var expect = chai.expect;
+var should = chai.should();
+
+var http = require("http");
+chai.use(chaiHttp);
 
 describe("Test Get All Customer API call result", function () {
     var requestResult;
@@ -41,7 +46,7 @@ describe("Test Get All Customer API call result", function () {
             for (var i = 0; i < body.length; i++) {
                 expect(body[i]).to.have.property("firstName");
                 expect(body[i]).to.have.property("lastName");
-                expect(body[i]).to.have.property("address")
+                expect(body[i]).to.have.property("address");
             }
             return true;
         });
@@ -52,9 +57,9 @@ describe("Test Get All Customer API call result", function () {
         expect(response.body).to.have.length.above(0);
         expect(response.body).to.satisfy(function (body) {
             for (var i = 0; i < body.length; i++) {
-                expect(body[i].firstName).to.be.a('string');
-                expect(body[i].lastName).to.be.a('string');
-                expect(body[i].address).to.be.a('object');
+                expect(body[i].firstName).to.be.a("string");
+                expect(body[i].lastName).to.be.a("string");
+                expect(body[i].address).to.be.a("object");
             }
             return true;
         });
@@ -62,8 +67,9 @@ describe("Test Get All Customer API call result", function () {
 
     // Ensures that a json is returned
     it("Should have Content-Type header set to application/json", function () {
-        expect(response).to.have.header('content-type', 'application/json; charset=utf-8');
+        expect(response).to.have.header(
+            "content-type",
+            "application/json; charset=utf-8"
+        );
     });
-    
 });
-
