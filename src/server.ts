@@ -3,7 +3,7 @@ import { App } from './App';
 
 dotenv.config();
 
-const port = process.env.BACKEND_PORT || 8080;
+const port = process.env.BACKEND_PORT || 3000;
 const mongoDbString = process.env.MONGODB_CONNECTION_URL || '';
 const app = new App(mongoDbString);
 app.expressApp.listen(port);
