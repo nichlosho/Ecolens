@@ -22,7 +22,7 @@ export class App {
         this.expressApp.use('/', express.static(__dirname + '/dist/Ecolens'));
         // Wildcard Route catch all get
         this.expressApp.get('/*', (req, res) => {
-            res.sendFile(path.join(__dirname, '../dist/Ecolens/index.html'));
+            res.sendFile(path.join(__dirname, '/dist/Ecolens/index.html'));
         });
     }
 
