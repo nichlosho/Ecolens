@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { getBackendBaseUrl } from '../helper/backendUrl';
 import { MaterialType, PrescriptionType } from '../interfaces/IGlassesInfo';
 import { IProduct } from '../interfaces/IProduct';
 import { IService } from '../interfaces/IService';
 
 @Injectable()
 export class ProductService implements IService {
-    public readonly baseUrl = environment.baseUrl + environment.backendPort;
+    public readonly baseUrl = getBackendBaseUrl();
     public readonly endpoint = `products`;
 
     constructor(private http: HttpClient) {}
