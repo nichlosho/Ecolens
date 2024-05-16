@@ -97,7 +97,6 @@ describe("Test Get Single Customer API call result", function () {
             .end(function (err, res) {
                 requestResult = res.body;
                 response = res;
-                console.log("--------------test ", res.body, customerId);
                 expect(err).to.be.null;
                 expect(res).to.have.status(200);
                 expect(response.body).to.be.an("object");
