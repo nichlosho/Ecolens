@@ -37,7 +37,7 @@ export class ProductService implements IService {
     public async getAllProducts(): Promise<IProduct[]> {
         try {
             const response = await this.http
-                .get<IProduct[]>(`${this.baseUrl}/${this.endpoint}`)
+                .get<IProduct[]>(`${this.baseUrl}${this.endpoint}`)
                 .toPromise();
             return response;
         } catch (error) {
