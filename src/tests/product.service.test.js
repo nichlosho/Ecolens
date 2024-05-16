@@ -8,13 +8,13 @@ var should = chai.should();
 
 var http = require("http");
 chai.use(chaiHttp);
-
+var baseUrl = "https://ecolens.onrender.com";
 describe("Test Get All Products API call result", function () {
     var requestResult;
     var response;
 
     before(function (done) {
-        chai.request("https://ecolens.onrender.com")
+        chai.request(baseUrl)
             .get("/products")
             .end(function (err, res) {
                 requestResult = res.body;

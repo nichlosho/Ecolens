@@ -1,18 +1,14 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { getBackendBaseUrl } from '../helper/backendUrl';
 import { IProduct } from '../interfaces/IProduct';
-import { IService } from '../interfaces/IService';
-@Injectable()
-export class ProductService implements IService {
-    public readonly baseUrl = getBackendBaseUrl();
-    public readonly endpoint = `products`;
+import { BaseService } from './base.service';
 
-    constructor(private http: HttpClient) {}
+@Injectable()
+export class ProductService extends BaseService {
+    public override endpoint = `products`;
 
     public async getProductById(id: number): Promise<IProduct> {
         try {
-            const url = `${this.baseUrl}/${this.endpoint}/${id}`;
+            const url = `${this.fullUrl}/${id}`;
             const response = await this.http.get<IProduct>(url).toPromise();
             return response;
         } catch (error) {
@@ -23,7 +19,7 @@ export class ProductService implements IService {
         materialType: string
     ): Promise<IProduct[]> {
         try {
-            const url = `${this.baseUrl}/${this.endpoint}?material=${materialType}`;
+            const url = `${this.fullUrl}?material=${materialType}`;
             const response = await this.http.get<IProduct[]>(url).toPromise();
             return response;
         } catch (error) {
@@ -32,7 +28,7 @@ export class ProductService implements IService {
     }
     public async getProductsByCategory(category: string): Promise<IProduct[]> {
         try {
-            const url = `${this.baseUrl}/${this.endpoint}?category=${category}`;
+            const url = `${this.fullUrl}?category=${category}`;
             const response = await this.http.get<IProduct[]>(url).toPromise();
             return response;
         } catch (error) {
@@ -43,7 +39,7 @@ export class ProductService implements IService {
     public async getAllProducts(): Promise<IProduct[]> {
         try {
             const response = await this.http
-                .get<IProduct[]>(`${this.baseUrl}/${this.endpoint}`)
+                .get<IProduct[]>(`${this.fullUrl}`)
                 .toPromise();
             return response;
         } catch (error) {

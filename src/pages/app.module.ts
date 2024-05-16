@@ -7,6 +7,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { RouterModule } from '@angular/router';
+import { BaseService } from '../service/base.service';
+import { CartService } from '../service/cart.service';
+import { CustomerService } from '../service/customer.service';
+import { OrderService } from '../service/order.service';
 import { ProductService } from '../service/product.service';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
@@ -38,7 +42,14 @@ import { SignInComponent } from './sign-in/sign-in.component';
         MatCardModule,
         MatGridListModule,
     ],
-    providers: [ProductService, provideAnimationsAsync()],
+    providers: [
+        BaseService,
+        ProductService,
+        CartService,
+        CustomerService,
+        OrderService,
+        provideAnimationsAsync(),
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

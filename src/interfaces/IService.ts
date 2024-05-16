@@ -1,4 +1,5 @@
 export interface IService {
-    readonly baseUrl: string;
-    readonly endpoint: string;
+    baseUrl: string;
+    endpoint: string;
+    fullUrl: string;
 }
