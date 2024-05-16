@@ -12,8 +12,14 @@ export class ProductService implements IService {
 
     constructor(private http: HttpClient) {}
 
-    public async getProductDetails() {
-        return;
+    public async getProductDetails(productId: number): Promise<IProduct> {
+        try {
+            const url = `${this.baseUrl}/${this.endpoint}/${productId}`;
+            const response = await this.http.get<IProduct>(url).toPromise();
+            return response;
+        } catch (error) {
+            console.error('Error fetching product details:', error);
+        }
     }
     public async getProductsByMaterialType(
         materialType: MaterialType

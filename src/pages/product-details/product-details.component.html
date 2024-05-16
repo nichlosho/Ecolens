@@ -1,1 +1,10 @@
-<p>Product details work</p>
+<div *ngIf="product; else loading">
+    <h2>{{ product.name }}</h2>
+    <img [src]="product.imageUrl" alt="{{ product.name }}">
+    <p>{{ product.description }}</p>
+    <p><strong>Price:</strong> ${{ product.price }}</p>
+  </div>
+  <ng-template #loading>
+    <p>Loading product details...</p>
+  </ng-template>
+  
