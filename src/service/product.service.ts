@@ -14,7 +14,7 @@ export class ProductService implements IService {
 
     public async getProductById(id: number): Promise<IProduct> {
         try {
-            const url = `${this.baseUrl}/${this.endpoint}/${id}`;
+            const url = `${this.baseUrl}${this.endpoint}/${id}`;
             const response = await this.http.get<IProduct>(url).toPromise();
             return response;
         } catch (error) {
