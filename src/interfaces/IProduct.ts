@@ -12,7 +12,7 @@ export enum ICategory {
 }
 
 export interface IProduct {
-    id?: mongoose.Types.ObjectId;
+    _id?: mongoose.Types.ObjectId;
     name?: string;
     description?: string;
     price?: number;

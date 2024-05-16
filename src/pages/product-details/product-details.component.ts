@@ -4,29 +4,29 @@ import { IProduct } from '../../interfaces/IProduct';
 import { ProductService } from '../../service/product.service';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+    selector: 'app-product-details',
+    templateUrl: './product-details.component.html',
+    styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
-  product: IProduct | null = null; // Use a plain object to store the product details
+    public product: IProduct | null = null;
 
-  constructor(
-    private productService: ProductService,
-    private route: ActivatedRoute
-  ) {}
+    constructor(
+        private productService: ProductService,
+        private route: ActivatedRoute
+    ) {}
 
-  ngOnInit(): void {
-    this.route.params.subscribe(async params => {
-      const productId = +params['id'];  // Convert string parameter to a number
-      if (productId) {
-        try {
-          this.product = await this.productService.getProductDetails(productId);
-        } catch (error) {
-          console.error('Failed to fetch product details', error);
-          this.product = null; // Handle the error by setting product to null
-        }
-      }
-    });
-  }
+    ngOnInit(): void {
+        this.route.queryParams.subscribe(async (params) => {
+            const id = params['id'];
+            if (!id) {
+                return;
+            }
+            try {
+                this.product = await this.productService.getProductById(id);
+            } catch (error) {
+                console.error('Failed to fetch product details', error);
+            }
+        });
+    }
 }

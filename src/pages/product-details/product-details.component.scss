@@ -1,60 +1,6 @@
-// Variables for theme colors, fonts, etc.
-$font-primary: 'Arial', sans-serif;
-$color-primary: #2c3e50;
-$color-secondary: #34495e;
-$background-light: #ecf0f1;
-$button-color: #3498db;
-
-body {
-    font-family: $font-primary;
-    margin: 0;
-    padding: 0;
-    background: $background-light;
-    color: $color-primary;
-}
-
-header, footer {
-    background-color: $color-secondary;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-}
-
-#product-details {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-
-    .product-image {
-        flex: 1;
-
-        img {
-            width: 100%;
-            height: auto;
-        }
-    }
-
-    .product-info {
-        flex: 2;
-        padding: 0 20px;
-
-        h2 {
-            color: $color-secondary;
-        }
-
-        .price {
-            font-size: 24px;
-            color: $button-color;
-        }
-
-        button {
-            background: $button-color;
-            border: none;
-            padding: 10px 20px;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-    }
+.product-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 160px;
+    border-radius: 8px;
+    background-color: #fff;
 }

@@ -1,0 +1,31 @@
+/* Flexbox container */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Flex-grow for main content to take remaining space */
+.content {
+    flex: 1;
+}
+
+/* Footer styles */
+.container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+}
+
+.float-right {
+    float: right;
+}
+
+/* Clear float */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}

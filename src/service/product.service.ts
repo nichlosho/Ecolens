@@ -12,9 +12,9 @@ export class ProductService implements IService {
 
     constructor(private http: HttpClient) {}
 
-    public async getProductDetails(productId: number): Promise<IProduct> {
+    public async getProductById(id: number): Promise<IProduct> {
         try {
-            const url = `${this.baseUrl}/${this.endpoint}/${productId}`;
+            const url = `${this.baseUrl}/${this.endpoint}/${id}`;
             const response = await this.http.get<IProduct>(url).toPromise();
             return response;
         } catch (error) {

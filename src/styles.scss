@@ -1,47 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
-  
-  /*
+
+/*
    * Custom translucent site header
    */
-  
-  .site-header {
-    background-color: rgba(0, 0, 0, .85);
+
+.site-header {
+    background-color: rgba(0, 0, 0, 0.85);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
-  }
-  .site-header a {
+}
+.site-header a {
     color: gray;
     font-size: large;
-    transition: ease-in-out color .15s;
-  }
-  .site-header a:hover {
+    transition: ease-in-out color 0.15s;
+}
+.site-header a:hover {
     color: #407dc2;
     text-decoration: none;
-  }
-  
-  /*
+}
+
+/*
    * Extra utilities
    */
-  
-  .border-top { border-top: 1px solid #e5e5e5; }
-  .border-bottom { border-bottom: 1px solid #e5e5e5; }
-  
-  .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
-  
-  .flex-equal > * {
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+.flex-equal > * {
     -ms-flex: 1;
     -webkit-box-flex: 1;
     flex: 1;
-  }
-  @media (min-width: 768px) {
+}
+@media (min-width: 768px) {
     .flex-md-equal > * {
-      -ms-flex: 1;
-      -webkit-box-flex: 1;
-      flex: 1;
+        -ms-flex: 1;
+        -webkit-box-flex: 1;
+        flex: 1;
     }
-  }
-  
-  .overflow-hidden { overflow: hidden; }
-  
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

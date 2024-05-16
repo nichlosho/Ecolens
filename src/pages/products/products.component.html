@@ -17,8 +17,10 @@
                 </p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button>View details</button>
-                <button mat-button>Add to cart</button>
+                <a mat-button href="/products/details?id={{ item._id }}">
+                    View details
+                </a>
+                <a mat-button>Add to cart</a>
             </mat-card-actions>
         </mat-card>
     </div>
