@@ -1,7 +1,6 @@
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var async = require("async");
-
 var assert = chai.assert;
 var expect = chai.expect;
 var should = chai.should();
@@ -14,7 +13,7 @@ describe("Test Get All Customer API call result", function () {
     var response;
 
     before(function (done) {
-        chai.request("http://localhost:3000")
+        chai.request("https://ecolens.onrender.com")
             .get("/customers")
             .end(function (err, res) {
                 requestResult = res.body;

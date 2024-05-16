@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { getBackendBaseUrl } from '../helper/backendUrl';
 import { IService } from '../interfaces/IService';
 
 @Injectable()
 export class OrderService implements IService {
-    public readonly baseUrl = environment.baseUrl + environment.backendPort;
-    public readonly endpoint = `/orders`;
+    public readonly baseUrl = getBackendBaseUrl();
+    public readonly endpoint = `orders`;
 
     constructor(private http: HttpClient) {}
 

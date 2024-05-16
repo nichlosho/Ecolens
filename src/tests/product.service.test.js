@@ -14,7 +14,7 @@ describe("Test Get All Products API call result", function () {
     var response;
 
     before(function (done) {
-        chai.request("http://localhost:3000")
+        chai.request("https://ecolens.onrender.com")
             .get("/products")
             .end(function (err, res) {
                 requestResult = res.body;
@@ -57,9 +57,9 @@ describe("Test Get All Products API call result", function () {
         expect(response.body).to.have.length.above(0);
         expect(response.body).to.satisfy(function (body) {
             for (var i = 0; i < body.length; i++) {
-                expect(body[i].name).to.be.a('string');
-                expect(body[i].description).to.be.a('string');
-                expect(body[i].glassesInfo).to.be.a('object');
+                expect(body[i].name).to.be.a("string");
+                expect(body[i].description).to.be.a("string");
+                expect(body[i].glassesInfo).to.be.a("object");
             }
             return true;
         });
@@ -67,7 +67,9 @@ describe("Test Get All Products API call result", function () {
 
     // Ensures that a json is returned
     it("Should have Content-Type header set to application/json", function () {
-        expect(response).to.have.header('content-type', 'application/json; charset=utf-8');
+        expect(response).to.have.header(
+            "content-type",
+            "application/json; charset=utf-8"
+        );
     });
-
 });

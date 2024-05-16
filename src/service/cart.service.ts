@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { getBackendBaseUrl } from '../helper/backendUrl';
 import { ICart } from '../interfaces/ICart';
 import { IService } from '../interfaces/IService';
 
 @Injectable()
 export class CartService implements IService {
-    public readonly baseUrl = environment.baseUrl + environment.backendPort;
-    public readonly endpoint = `/cart`;
+    private static _cart: ICart;
+    public readonly baseUrl = getBackendBaseUrl();
+    public readonly endpoint = `cart`;
 
     constructor(private http: HttpClient) {}
-
-    private static _cart: ICart;
 
     // don't store in database, instead use browser cache
 

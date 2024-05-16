@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IProduct } from '../../interfaces/IProduct';
 import { ProductService } from '../../service/product.service';
 
@@ -8,19 +9,26 @@ import { ProductService } from '../../service/product.service';
     styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements OnInit {
-    public items: IProduct[] = [];
+    public products: IProduct[] = [];
 
-    constructor(private productService: ProductService) {}
+    constructor(
+        private productService: ProductService,
+        private route: ActivatedRoute
+    ) {}
 
     ngOnInit(): void {
-        this.productService
-            .getAllProducts()
-            .then((data) => {
-                this.items = data;
-            })
-            .catch((error) => {
-                console.error('Failed to fetch products', error);
-                this.items = []; // Handling error by setting items to an empty array
-            });
+        this.route.queryParams.subscribe(async (params) => {
+            try {
+                const material = params['material'];
+                this.products = material
+                    ? await this.productService.getProductsByMaterialType(
+                          material
+                      )
+                    : await this.productService.getAllProducts();
+            } catch (error) {
+                console.error('Failed to fetch product by material', error);
+                this.products = [];
+            }
+        });
     }
 }
