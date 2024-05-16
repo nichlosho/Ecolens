@@ -4,5 +4,5 @@ export function getBackendBaseUrl(): string {
     const isProduction = window.location.hostname !== 'localhost';
     return isProduction
         ? 'https://ecolens.onrender.com'
-        : `${environment.baseUrl}:${environment.backendPort}`;
+        : `${environment.baseUrl}${environment.backendPort}`;
 }

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { getBackendBaseUrl } from '../helper/backendUrl';
-import { PrescriptionType } from '../interfaces/IGlassesInfo';
 import { IProduct } from '../interfaces/IProduct';
 import { IService } from '../interfaces/IService';
 @Injectable()
@@ -28,14 +27,17 @@ export class ProductService implements IService {
             const response = await this.http.get<IProduct[]>(url).toPromise();
             return response;
         } catch (error) {
-            console.error('Error fetching product details:', error);
+            console.error('Error fetching product materials:', error);
         }
     }
-    public async getProductsByPrescriptionType(
-        prescriptionType: PrescriptionType
-    ): Promise<IProduct[]> {
-        console.log(prescriptionType);
-        return [];
+    public async getProductsByCategory(category: string): Promise<IProduct[]> {
+        try {
+            const url = `${this.baseUrl}/${this.endpoint}?category=${category}`;
+            const response = await this.http.get<IProduct[]>(url).toPromise();
+            return response;
+        } catch (error) {
+            console.error('Error fetching product category:', error);
+        }
     }
 
     public async getAllProducts(): Promise<IProduct[]> {

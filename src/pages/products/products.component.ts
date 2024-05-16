@@ -20,11 +20,22 @@ export class ProductsComponent implements OnInit {
         this.route.queryParams.subscribe(async (params) => {
             try {
                 const material = params['material'];
-                this.products = material
-                    ? await this.productService.getProductsByMaterialType(
-                          material
-                      )
-                    : await this.productService.getAllProducts();
+                const category = params['category'];
+                if (material) {
+                    this.products =
+                        await this.productService.getProductsByMaterialType(
+                            material
+                        );
+                    return;
+                }
+                if (category) {
+                    this.products =
+                        await this.productService.getProductsByCategory(
+                            category
+                        );
+                    return;
+                }
+                this.products = await this.productService.getAllProducts();
             } catch (error) {
                 console.error('Failed to fetch product by material', error);
                 this.products = [];
