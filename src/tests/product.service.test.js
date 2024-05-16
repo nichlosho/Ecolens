@@ -94,7 +94,7 @@ describe("Test Get Single Product API call result", function () {
   it("Should return a single product object", function (done) {
     chai
       .request(baseUrl)
-      .get(`/products/${productId}`)
+      .get("/products/" + productId)
       .end(function (err, res) {
         requestResult = res.body;
         response = res;
