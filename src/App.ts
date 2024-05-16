@@ -23,6 +23,11 @@ export class App {
         // this.expressApp.get('/*', (req, res) => {
         //     res.sendFile(path.join(__dirname, 'dist/ecolens/index.html'));
         // });
+
+        this.expressApp.use(
+            '/',
+            express.static('/home/site/wwwroot/ecolens/index.html')
+        );
     }
 
     // Configure API endpoints.
