@@ -7,13 +7,14 @@ var should = chai.should();
 var http = require("http");
 
 chai.use(chaiHttp);
+var baseUrl = "https://ecolens.onrender.com";
 
 describe("Test Get All Customer API call result", function () {
     var requestResult;
     var response;
 
     before(function (done) {
-        chai.request("https://ecolens.onrender.com")
+        chai.request(baseUrl)
             .get("/customers")
             .end(function (err, res) {
                 requestResult = res.body;
@@ -79,7 +80,7 @@ describe("Test Get Single Customer API call result", function () {
     var customerId;
 
     before(function (done) {
-        chai.request("https://ecolens.onrender.com")
+        chai.request(baseUrl)
             .get("/customers")
             .end(function (err, res) {
                 expect(err).to.be.null;
@@ -92,7 +93,7 @@ describe("Test Get Single Customer API call result", function () {
     });
 
     it("Should return a single customer object", function (done) {
-        chai.request("https://ecolens.onrender.com")
+        chai.request(baseUrl)
             .get("/customers/" + customerId)
             .end(function (err, res) {
                 requestResult = res.body;

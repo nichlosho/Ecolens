@@ -8,7 +8,6 @@ export class CartService extends BaseService {
     private static _cart: ICart;
 
     // don't store in database, instead use browser cache
-
     // public addToCart(product: Product): void {
     //     this.cart.addItem(product);
     // }
