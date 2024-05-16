@@ -4,17 +4,16 @@ var async = require("async");
 var assert = chai.assert;
 var expect = chai.expect;
 var should = chai.should();
-
 var http = require("http");
+
 chai.use(chaiHttp);
-var baseUrl = "https://ecolens.onrender.com";
 
 describe("Test Get All Customer API call result", function () {
     var requestResult;
     var response;
 
     before(function (done) {
-        chai.request(baseUrl)
+        chai.request("https://ecolens.onrender.com")
             .get("/customers")
             .end(function (err, res) {
                 requestResult = res.body;
@@ -52,7 +51,7 @@ describe("Test Get All Customer API call result", function () {
         });
     });
 
-    // Ensures that correct type for specifc objects
+    // Ensures that correct type for specific objects
     it("The elements in the array have the expected properties with correct types", function () {
         expect(response.body).to.have.length.above(0);
         expect(response.body).to.satisfy(function (body) {
@@ -71,5 +70,52 @@ describe("Test Get All Customer API call result", function () {
             "content-type",
             "application/json; charset=utf-8"
         );
+    });
+});
+
+describe("Test Get Single Customer API call result", function () {
+    var requestResult;
+    var response;
+    var customerId;
+
+    before(function (done) {
+        chai.request("https://ecolens.onrender.com")
+            .get("/customers")
+            .end(function (err, res) {
+                expect(err).to.be.null;
+                expect(res).to.have.status(200);
+                expect(res.body).to.have.length.above(0);
+                customerId = res.body[0]._id;
+                expect(customerId).to.be.a("string");
+                done();
+            });
+    });
+
+    it("Should return a single customer object", function (done) {
+        chai.request("https://ecolens.onrender.com")
+            .get("/customers/" + customerId)
+            .end(function (err, res) {
+                requestResult = res.body;
+                response = res;
+                console.log("--------------test ", res.body, customerId);
+                expect(err).to.be.null;
+                expect(res).to.have.status(200);
+                expect(response.body).to.be.an("object");
+                done();
+            });
+    });
+
+    it("The returned customer should have the expected properties", function () {
+        expect(requestResult).to.include.keys("email");
+        expect(requestResult).to.have.property("_id");
+        expect(requestResult).to.have.property("firstName");
+        expect(requestResult).to.have.property("lastName");
+        expect(requestResult).to.have.property("address");
+    });
+
+    it("The returned customer should have the expected property types", function () {
+        expect(requestResult.firstName).to.be.a("string");
+        expect(requestResult.lastName).to.be.a("string");
+        expect(requestResult.address).to.be.a("object");
     });
 });
