@@ -1,5 +1,5 @@
 import * as express from 'express';
-import passport from 'passport';
+import * as passport from 'passport';
 import { IBaseRouter } from '../interfaces/IRouter';
 
 export class GoogleRouter implements IBaseRouter {

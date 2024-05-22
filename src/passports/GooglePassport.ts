@@ -1,5 +1,5 @@
-import passport from 'passport';
-import GoogleStrategy from 'passport-google-oauth20-with-people-api';
+import * as passport from 'passport';
+import * as GoogleStrategy from 'passport-google-oauth20-with-people-api';
 
 // Creates a Passport configuration for Google
 class GooglePassport {
