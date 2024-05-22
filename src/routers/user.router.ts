@@ -13,12 +13,11 @@ export class UserRouter extends BaseModelRouter<IUser> {
     public override initializeRoutes(): void {
         // ----------------------------------- GET -----------------------------------\\
 
-        // localhost:3000/user
-        // localhost:3000/user?firstName=Lisa&email=lisa@example.com
-        // localhost:3000/user?firstName=Lisa
+        // localhost:3000/users
+        // localhost:3000/users?firstName=Lisa&email=lisa@example.com
+        // localhost:3000/users?firstName=Lisa
         this.router.get(
             '/',
-            this.validateAuth,
             async (req: Request, res: Response): Promise<void> => {
                 try {
                     const { firstName, email } = req.query;
@@ -47,10 +46,9 @@ export class UserRouter extends BaseModelRouter<IUser> {
             }
         );
 
-        // localhost:3000/user/1
+        // localhost:3000/users/1
         this.router.get(
             '/:id',
-            this.validateAuth,
             async (req: Request, res: Response): Promise<void> => {
                 const customerId = req.params.id;
                 try {
@@ -90,11 +88,6 @@ export class UserRouter extends BaseModelRouter<IUser> {
         // ----------------------------------- PUT -----------------------------------\\
         // ----------------------------------- DELETE -----------------------------------\\
     }
-
-    // private checkSession(req: Request): boolean {
-    //     return req.session.id.length > 0;
-    // }
-
     private validateAuth(req, res, next): void {
         if (req.isAuthenticated()) {
             console.log('user is authenticated');

@@ -3,9 +3,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 90vh; /* Adjust height to center vertically */
+    height: 90vh;
 }
 
 .container > div {
-    margin-bottom: 20px; /* Adjust spacing between heading and button */
+    margin-bottom: 20px;
+}
+
+button {
+    margin: 40px;
 }

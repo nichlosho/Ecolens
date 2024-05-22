@@ -24,7 +24,7 @@ export class GoogleRouter implements IBaseRouter {
 
         this._router.get(
             '/callback',
-            passport.authenticate('google', { failureRedirect: '/' }),
+            passport.authenticate('google', { failureRedirect: '/signin' }),
             (req, res) => {
                 console.log(
                     'successfully authenticated user and returned to callback page.'

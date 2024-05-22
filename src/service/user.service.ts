@@ -5,7 +5,7 @@ import { BaseService } from './base.service';
 
 @Injectable()
 export class UserService extends BaseService {
-    public override endpoint = `customer`;
+    public override endpoint = `users`;
 
     public static async addCustomer(customer: IUser): Promise<void> {
         console.log(customer);
