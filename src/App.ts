@@ -10,7 +10,6 @@ import cookieParser = require('cookie-parser');
 import MongoStore = require('connect-mongo');
 import session = require('express-session');
 
-// Creates and configures an ExpressJS web server.
 export class App {
     private _expressApp: express.Application;
     public get expressApp(): express.Application {
@@ -23,7 +22,7 @@ export class App {
     private _googlePassportObj: GooglePassportObj;
 
     constructor(mongoDBConnectionUrl: string) {
-        //this.googlePassportObj = new GooglePassportObj();
+        this._googlePassportObj = new GooglePassportObj();
         this._expressApp = express();
         this.configExpressMiddleware();
         this.configSessionMiddleware(mongoDBConnectionUrl);
@@ -34,7 +33,6 @@ export class App {
         );
     }
 
-    // Configure API endpoints.
     private initializeRouters(mongoDBConnectionUrl: string): void {
         const router = express.Router();
 
@@ -44,7 +42,7 @@ export class App {
 
         // User router
         this._userRouter = new UserRouter(mongoDBConnectionUrl);
-        router.use('/user', this._userRouter.router);
+        router.use('/users', this._userRouter.router);
 
         //Cart router
 
@@ -57,18 +55,25 @@ export class App {
         this._expressApp.use('/', router);
     }
     private configExpressMiddleware(): void {
+        this._expressApp.use(cors());
         this._expressApp.use(bodyParser.json());
         this._expressApp.use(bodyParser.urlencoded({ extended: false }));
         this._expressApp.use((req, res, next) => {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header(
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader(
                 'Access-Control-Allow-Headers',
                 'Origin, X-Requested-With, Content-Type, Accept'
             );
+            res.setHeader(
+                'Access-Control-Allow-Methods',
+                'OPTIONS, GET, POST, PUT, PATCH, DELETE'
+            );
+            res.setHeader(
+                'Access-Control-Allow-Headers',
+                'Content-Type, Authorization'
+            );
             next();
         });
-
-        this._expressApp.use(cors());
     }
     private configSessionMiddleware(mongoDBConnectionUrl: string) {
         this._googlePassportObj = new GooglePassportObj();
