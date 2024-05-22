@@ -9,9 +9,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { RouterModule } from '@angular/router';
 import { BaseService } from '../service/base.service';
 import { CartService } from '../service/cart.service';
-import { CustomerService } from '../service/customer.service';
 import { OrderService } from '../service/order.service';
 import { ProductService } from '../service/product.service';
+import { SsoService } from '../service/sso.service';
+import { UserService } from '../service/user.service';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 import { CartComponent } from './cart/cart.component';
@@ -46,8 +47,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
         BaseService,
         ProductService,
         CartService,
-        CustomerService,
+        UserService,
         OrderService,
+        SsoService,
         provideAnimationsAsync(),
     ],
     bootstrap: [AppComponent],

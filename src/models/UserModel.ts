@@ -1,23 +1,20 @@
-import { ObjectId } from 'mongodb';
 import { Schema } from 'mongoose';
-import { ICustomer } from '../interfaces/ICustomer';
+import { IUser } from '../interfaces/IUser';
 import { BaseModel } from './BaseModel';
 
-export class CustomerModel extends BaseModel<ICustomer> {
+export class UserModel extends BaseModel<IUser> {
     // ---------------------------------- Public Override Interfaces ----------------------------------//
     public override get collectionName(): string {
-        return 'Customers';
+        return 'Users';
     }
-    public override getSchema(): Schema<ICustomer> {
-        return new Schema<ICustomer>(
+    public override getSchema(): Schema<IUser> {
+        return new Schema<IUser>(
             {
-                id: ObjectId,
+                ssoId: { type: String, required: true, unique: true },
                 firstName: String,
                 lastName: String,
                 email: String,
                 phone: String,
-                username: String,
-                password: String,
                 address: {
                     street: String,
                     city: String,
@@ -25,6 +22,7 @@ export class CustomerModel extends BaseModel<ICustomer> {
                     postalCode: String,
                     country: String,
                 },
+                cartItems: [{ itemId: String }],
             },
             { collection: this.collectionName }
         );

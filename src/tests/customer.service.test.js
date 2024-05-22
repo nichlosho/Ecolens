@@ -15,7 +15,7 @@ describe("Test Get All Customer API call result", function () {
 
     before(function (done) {
         chai.request(baseUrl)
-            .get("/customers")
+            .get("/users")
             .end(function (err, res) {
                 requestResult = res.body;
                 response = res;
@@ -81,7 +81,7 @@ describe("Test Get Single Customer API call result", function () {
 
     before(function (done) {
         chai.request(baseUrl)
-            .get("/customers")
+            .get("/users")
             .end(function (err, res) {
                 expect(err).to.be.null;
                 expect(res).to.have.status(200);
@@ -94,7 +94,7 @@ describe("Test Get Single Customer API call result", function () {
 
     it("Should return a single customer object", function (done) {
         chai.request(baseUrl)
-            .get("/customers/" + customerId)
+            .get("/users/" + customerId)
             .end(function (err, res) {
                 requestResult = res.body;
                 response = res;

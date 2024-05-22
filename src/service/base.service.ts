@@ -7,10 +7,9 @@ import { IService } from '../interfaces/IService';
 export class BaseService implements IService {
     public readonly baseUrl = getBackendBaseUrl();
     public endpoint = ``;
-
-    constructor(protected http: HttpClient) {}
-
     public get fullUrl(): string {
         return `${this.baseUrl}/${this.endpoint}`;
     }
+
+    constructor(protected http: HttpClient) {}
 }

@@ -17,7 +17,6 @@ export class GoogleRouter implements IBaseRouter {
     }
 
     public initializeRoutes(): void {
-        // ----------------------------------- GET -----------------------------------\\
         this._router.get(
             '/',
             passport.authenticate('google', { scope: ['profile'] })
@@ -30,8 +29,7 @@ export class GoogleRouter implements IBaseRouter {
                 console.log(
                     'successfully authenticated user and returned to callback page.'
                 );
-                console.log('redirecting to /#/list');
-                res.redirect('/#/list');
+                res.redirect('/');
             }
         );
     }
