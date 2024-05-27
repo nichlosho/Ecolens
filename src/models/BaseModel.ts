@@ -70,10 +70,7 @@ export abstract class BaseModel<T> implements IModel {
         }
     }
     // ----------------------------------- PUT -----------------------------------\\
-    public async update(
-        filter: IMongooseFilter,
-        updateItem: object
-    ): Promise<unknown> {
+    public async update(filter: object, updateItem: object): Promise<unknown> {
         const query = this.model.findOneAndUpdate(filter, updateItem, {
             new: true,
         });

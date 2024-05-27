@@ -67,34 +67,51 @@ export class UserRouter extends BaseModelRouter<IUser> {
 
         // ----------------------------------- POST -----------------------------------\\
 
-        // this.router.post('/', async (req: Request, res: Response) => {
-        //     try {
-        //         const newCustomer = req.body as IUser;
-        //         const result = await this.model.insertMany(newCustomer);
+        this.router.post('/', async (req: Request, res: Response) => {
+            try {
+                const newUser = req.body as IUser;
+                console.log('post newuser', newUser);
+                const result = await this.model.insertMany(newUser);
 
-        //         if (result) {
-        //             res.status(201).send(
-        //                 `Successfully created a new customer with result ${result}`
-        //             );
-        //         } else {
-        //             res.status(500).send('Failed to create new customer');
-        //         }
-        //     } catch (error) {
-        //         console.error(error);
-        //         res.status(400).send(error.message);
-        //     }
-        // });
+                if (result) {
+                    res.status(201).send(
+                        `Successfully created a new customer with result ${result}`
+                    );
+                } else {
+                    res.status(500).send('Failed to create new customer');
+                }
+            } catch (error) {
+                console.error(error);
+                res.status(400).send(error.message);
+            }
+        });
 
         // ----------------------------------- PUT -----------------------------------\\
+
+        this.router.put('/', async (req: Request, res: Response) => {
+            try {
+                const newUser = req.body as IUser;
+                console.log('put newuser', newUser);
+                const filter = createCaseInsensitiveFilter(
+                    {},
+                    'ssoId',
+                    newUser.ssoId as string
+                );
+                const result = await this.model.update(filter, newUser);
+
+                if (result) {
+                    res.status(201).send(
+                        `Successfully created a new customer with result ${result}`
+                    );
+                } else {
+                    res.status(500).send('Failed to create new customer');
+                }
+            } catch (error) {
+                console.error(error);
+                res.status(400).send(error.message);
+            }
+        });
+
         // ----------------------------------- DELETE -----------------------------------\\
-    }
-    private validateAuth(req, res, next): void {
-        if (req.isAuthenticated()) {
-            console.log('user is authenticated');
-            console.log(JSON.stringify(req.user));
-            return next();
-        }
-        console.log('user is not authenticated');
-        res.redirect('/');
     }
 }

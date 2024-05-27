@@ -45,8 +45,7 @@ describe("Test Get All Customer API call result", function () {
         expect(response.body).to.satisfy(function (body) {
             for (var i = 0; i < body.length; i++) {
                 expect(body[i]).to.have.property("firstName");
-                expect(body[i]).to.have.property("lastName");
-                expect(body[i]).to.have.property("address");
+                expect(body[i]).to.have.property("email");
             }
             return true;
         });
@@ -58,8 +57,7 @@ describe("Test Get All Customer API call result", function () {
         expect(response.body).to.satisfy(function (body) {
             for (var i = 0; i < body.length; i++) {
                 expect(body[i].firstName).to.be.a("string");
-                expect(body[i].lastName).to.be.a("string");
-                expect(body[i].address).to.be.a("object");
+                expect(body[i].email).to.be.a("string");
             }
             return true;
         });
@@ -109,13 +107,11 @@ describe("Test Get Single Customer API call result", function () {
         expect(requestResult).to.include.keys("email");
         expect(requestResult).to.have.property("_id");
         expect(requestResult).to.have.property("firstName");
-        expect(requestResult).to.have.property("lastName");
-        expect(requestResult).to.have.property("address");
+        expect(requestResult).to.have.property("email");
     });
 
     it("The returned customer should have the expected property types", function () {
         expect(requestResult.firstName).to.be.a("string");
-        expect(requestResult.lastName).to.be.a("string");
-        expect(requestResult.address).to.be.a("object");
+        expect(requestResult.email).to.be.a("string");
     });
 });

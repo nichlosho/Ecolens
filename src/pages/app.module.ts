@@ -2,7 +2,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogActions, MatDialogContent } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -18,6 +20,7 @@ import { routes } from './app.routes';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProfileDialogComponent } from './components/profile-dialog/profile-dialog.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsComponent } from './products/products.component';
@@ -33,6 +36,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
         CheckoutComponent,
         NotFoundComponent,
         SignInComponent,
+        ProfileDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -42,6 +46,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
         MatButtonModule,
         MatCardModule,
         MatGridListModule,
+        MatMenuModule,
+        MatDialogActions,
+        MatDialogContent,
     ],
     providers: [
         BaseService,

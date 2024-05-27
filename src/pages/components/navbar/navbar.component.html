@@ -1,3 +1,5 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <nav class="site-header sticky-top py-1 navbar-light bg-light">
     <div
         class="container d-flex flex-column flex-md-row justify-content-between"
@@ -22,6 +24,32 @@
         >
         <a class="py-2 d-none d-md-inline-block" href="/cart">Cart</a>
         <a class="py-2 d-none d-md-inline-block" href="/checkout">Checkout</a>
-        <a class="py-2 d-none d-md-inline-block" href="/signin">Sign In</a>
+        <a *ngIf="!user" class="py-2 d-none d-md-inline-block" href="/signin"
+            >Sign In</a
+        >
+        <button
+            *ngIf="user"
+            style="height: 60px"
+            mat-button
+            [matMenuTriggerFor]="menu"
+        >
+            <a>
+                <img
+                    src="{{ user.photo }}"
+                    alt="Ecolens Logo"
+                    width="40"
+                    height="40"
+                    style="border-radius: 20px; margin-right: 10px"
+                />
+            </a>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <button mat-menu-item (click)="openDialog()">Profile</button>
+                <button mat-menu-item *ngIf="user" (click)="logoutGoogleUser()">
+                    Logout
+                </button>
+            </button>
+        </mat-menu>
     </div>
 </nav>

@@ -10,11 +10,13 @@ export class UserModel extends BaseModel<IUser> {
     public override getSchema(): Schema<IUser> {
         return new Schema<IUser>(
             {
-                ssoId: { type: String, required: true, unique: true },
                 firstName: String,
                 lastName: String,
                 email: String,
                 phone: String,
+                ssoId: String,
+                photo: String,
+                creditCard: String,
                 address: {
                     street: String,
                     city: String,

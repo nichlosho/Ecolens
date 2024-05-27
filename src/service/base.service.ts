@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { getBackendBaseUrl } from '../helper/backendUrl';
+import { getBackendBaseUrl } from '../helper/urlHelper';
 import { IService } from '../interfaces/IService';
 
 @Injectable()

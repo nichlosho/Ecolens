@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ObjectId } from 'mongoose';
 import { IUser } from '../interfaces/IUser';
 import { BaseService } from './base.service';
 
@@ -7,13 +6,13 @@ import { BaseService } from './base.service';
 export class UserService extends BaseService {
     public override endpoint = `users`;
 
-    public static async addCustomer(customer: IUser): Promise<void> {
-        console.log(customer);
-    }
-    public static async getCustomerById(
-        customerId: ObjectId
-    ): Promise<IUser | undefined> {
-        console.log(customerId);
-        return undefined;
+    public async upsertUser(user: IUser): Promise<void> {
+        try {
+            console.log('upsertUser', user);
+            const url = `${this.fullUrl}`;
+            await this.http.put<IUser>(url, user).toPromise();
+        } catch (error) {
+            console.error('Error saving user profile', error);
+        }
     }
 }
