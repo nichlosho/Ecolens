@@ -72,9 +72,11 @@ export class App {
                 {
                     clientID: process.env.OAUTH_ID,
                     clientSecret: process.env.OAUTH_SECRET,
-                    callbackURL: `${process.env.SERVER_BASE_URL}${
-                        process.env.PORT || 3000
-                    }/auth/google/callback`,
+                    callbackURL: process.env.IS_PROD
+                        ? `${process.env.SERVER_BASE_URL}/auth/google/callback`
+                        : `${process.env.SERVER_BASE_URL}${
+                              process.env.BACKEND_PORT || ''
+                          }/auth/google/callback`,
                     scope: ['profile', 'email'],
                 },
                 async (token, tokenSecret, profile, done) => {
