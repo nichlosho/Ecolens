@@ -49,10 +49,10 @@ export class App {
         this._expressApp.use(bodyParser.json());
         this._expressApp.use(bodyParser.urlencoded({ extended: false }));
         this._expressApp.use((req, res, next) => {
-            res.header('Access-Control-Allow-Origin', [
-                process.env.FRONT_END_URL,
-                process.env.SERVER_BASE_URL + process.env.BACKEND_PORT || '',
-            ]);
+            res.header(
+                'Access-Control-Allow-Origin',
+                process.env.FRONT_END_URL
+            );
             res.header(
                 'Access-Control-Allow-Headers',
                 'Content-Type, Authorization'
@@ -72,11 +72,12 @@ export class App {
                 {
                     clientID: process.env.OAUTH_ID,
                     clientSecret: process.env.OAUTH_SECRET,
-                    callbackURL: process.env.IS_PROD
-                        ? `${process.env.SERVER_BASE_URL}/auth/google/callback`
-                        : `${process.env.SERVER_BASE_URL}${
-                              process.env.BACKEND_PORT || ''
-                          }/auth/google/callback`,
+                    callbackURL:
+                        process.env.IS_PROD === 'true'
+                            ? `${process.env.SERVER_BASE_URL}/auth/google/callback`
+                            : `${process.env.SERVER_BASE_URL}${
+                                  process.env.BACKEND_PORT || ''
+                              }/auth/google/callback`,
                     scope: ['profile', 'email'],
                 },
                 async (token, tokenSecret, profile, done) => {
@@ -126,10 +127,10 @@ export class App {
         this._expressApp.use(passport.session());
 
         const corsHeaders = (req, res, next) => {
-            res.header('Access-Control-Allow-Origin', [
-                process.env.FRONT_END_URL,
-                process.env.SERVER_BASE_URL + process.env.BACKEND_PORT || '',
-            ]);
+            res.header(
+                'Access-Control-Allow-Origin',
+                process.env.FRONT_END_URL
+            );
             res.setHeader('Access-Control-Allow-Credentials', 'true');
             res.header(
                 'Access-Control-Allow-Methods',
