@@ -8,11 +8,18 @@ export class UserService extends BaseService {
 
     public async upsertUser(user: IUser): Promise<void> {
         try {
-            console.log('upsertUser', user);
             const url = `${this.fullUrl}`;
             await this.http.put<IUser>(url, user).toPromise();
         } catch (error) {
-            console.error('Error saving user profile', error);
+            // console.error('Error saving user profile', error);
+        }
+    }
+    public async getUserBySsoId(ssoId: string): Promise<IUser> {
+        try {
+            const url = `${this.fullUrl}?ssoId=${ssoId}`;
+            return await this.http.get<IUser>(url).toPromise();
+        } catch (error) {
+            console.error('Error getting user by sso Id', error);
         }
     }
 }

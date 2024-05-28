@@ -20,7 +20,7 @@ export class UserRouter extends BaseModelRouter<IUser> {
             '/',
             async (req: Request, res: Response): Promise<void> => {
                 try {
-                    const { firstName, email } = req.query;
+                    const { firstName, email, ssoId } = req.query;
                     let filter: object = {};
                     if (firstName) {
                         filter = createCaseInsensitiveFilter(
@@ -34,6 +34,13 @@ export class UserRouter extends BaseModelRouter<IUser> {
                             filter,
                             'email',
                             email as string
+                        );
+                    }
+                    if (ssoId) {
+                        filter = createCaseInsensitiveFilter(
+                            filter,
+                            'ssoId',
+                            ssoId as string
                         );
                     }
 

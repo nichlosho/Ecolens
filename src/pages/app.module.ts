@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogActions, MatDialogContent } from '@angular/material/dialog';
@@ -49,6 +50,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
         MatMenuModule,
         MatDialogActions,
         MatDialogContent,
+        FormsModule,
     ],
     providers: [
         BaseService,
