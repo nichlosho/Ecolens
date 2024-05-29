@@ -83,26 +83,26 @@ export class App {
                 async (token, tokenSecret, profile, done) => {
                     try {
                         const userModel = mongoose.models.Users;
+                        const existingUser = await userModel.findOne({
+                            ssoId: profile.id,
+                        });
                         const user = {
-                            firstName: profile.displayName,
+                            firstName: existingUser
+                                ? existingUser.firstName
+                                : profile.displayName,
                             email: profile.emails?.[0].value,
                             photo: profile.photos?.[0].value,
                             ssoId: profile.id,
                         };
-                        const findResult = await userModel.find({
-                            ssoId: user.ssoId,
-                        });
-                        if (findResult.length === 0) {
-                            await userModel.findOneAndUpdate(
-                                { ssoId: profile.id },
-                                user,
-                                {
-                                    new: true,
-                                    upsert: true,
-                                    setDefaultsOnInsert: true,
-                                }
-                            );
-                        }
+                        await userModel.findOneAndUpdate(
+                            { ssoId: user.ssoId },
+                            user,
+                            {
+                                new: true,
+                                upsert: true,
+                                setDefaultsOnInsert: true,
+                            }
+                        );
                         done(null, user);
                     } catch (err) {
                         done(err, null);
