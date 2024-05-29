@@ -89,15 +89,20 @@ export class App {
                             photo: profile.photos?.[0].value,
                             ssoId: profile.id,
                         };
-                        await userModel.findOneAndUpdate(
-                            { ssoId: profile.id },
-                            user,
-                            {
-                                new: true,
-                                upsert: true,
-                                setDefaultsOnInsert: true,
-                            }
-                        );
+                        const findResult = await userModel.find({
+                            ssoId: user.ssoId,
+                        });
+                        if (findResult.length === 0) {
+                            await userModel.findOneAndUpdate(
+                                { ssoId: profile.id },
+                                user,
+                                {
+                                    new: true,
+                                    upsert: true,
+                                    setDefaultsOnInsert: true,
+                                }
+                            );
+                        }
                         done(null, user);
                     } catch (err) {
                         done(err, null);
@@ -117,7 +122,7 @@ export class App {
         this._expressApp.use(cookieParser());
         this._expressApp.use(
             session({
-                secret: 'keyboard cat',
+                secret: 'some secret key',
                 resave: false,
                 saveUninitialized: false,
             })

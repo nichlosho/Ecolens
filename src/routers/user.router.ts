@@ -98,7 +98,6 @@ export class UserRouter extends BaseModelRouter<IUser> {
         this.router.put('/', async (req: Request, res: Response) => {
             try {
                 const newUser = req.body as IUser;
-                console.log('put newuser', newUser);
                 const filter = createCaseInsensitiveFilter(
                     {},
                     'ssoId',
