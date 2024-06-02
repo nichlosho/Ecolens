@@ -1,19 +1,89 @@
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile
-        ><img *ngIf="product" [src]="product.image" alt="{{ product.name }}"
-    /></mat-grid-tile>
-    <mat-grid-tile
-        ><div *ngIf="product" class="product-container">
-            <h1>{{ product.name }}</h1>
-            <p>{{ product.description }}</p>
-            <p><strong>Price:</strong> ${{ product.price }}</p>
-            <button class="btn btn-primary"
-          role="button"
-          id={{item.id}}
-          (click)="onCartUpdated($event)"
-          >
-          Add to Cart
-        </button>
-        </div>
-    </mat-grid-tile>
+<mat-grid-list cols="2" rowHeight="2:1" class="product-grid">
+  <mat-grid-tile class="product-image-tile">
+    <img *ngIf="product" [src]="product.image" [alt]="product.name" class="product-image"/>
+  </mat-grid-tile>
+  <mat-grid-tile class="product-details-tile">
+    <div *ngIf="product" class="product-container">
+      <h1 class="product-name">{{ product.name }}</h1>
+      <p class="product-description">{{ product.description }}</p>
+      <p class="product-price"><strong>Price:</strong> ${{ product.price }}</p>
+      <button 
+        class="btn btn-primary add-to-cart-btn" 
+        [id]="product.id" 
+        (click)="onCartUpdated($event)">
+        Add to Cart
+      </button>
+    </div>
+  </mat-grid-tile>
 </mat-grid-list>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap');
+
+  body {
+    font-family: 'Proxima Nova', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-grid {
+    background-color: #fff;
+    padding: 20px;
+  }
+
+  .product-image-tile, .product-details-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .product-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+
+  .product-name {
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: #333;
+    font-weight: bold;
+  }
+
+  .product-description {
+    margin: 8px 0;
+    color: #666;
+    font-size: 18px;
+  }
+
+  .product-price {
+    margin: 16px 0;
+    font-size: 20px;
+    color: #333;
+  }
+
+  .add-to-cart-btn {
+    margin-top: 20px;
+    background-color: #006EA5;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .add-to-cart-btn:hover {
+    background-color: #00588D;
+  }
+</style>

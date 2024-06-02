@@ -1,6 +1,14 @@
 .product-container {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 160px;
+    padding: 16px;
     border-radius: 8px;
     background-color: #fff;
-}
+  }
+  
+  .product-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* ensures the image covers the container without stretching */
+    border-radius: 8px; /* matches the container's border radius */
+  }
+  
