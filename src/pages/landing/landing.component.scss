@@ -6,6 +6,7 @@ body {
     padding-top: 3rem;
     padding-bottom: 3rem;
     color: #5a5a5a;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* CUSTOMIZE THE CAROUSEL
@@ -13,17 +14,26 @@ body {
 
 /* Carousel base class */
 .carousel {
-    margin-bottom: 4rem;
+    margin-bottom: 0rem;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     bottom: 3rem;
     z-index: 10;
+    background-color: rgb(2555, 255, 255, 0.3);
+    padding: 1rem 1rem;
+    color: black;
+}
+
+.carousel-heading {
+    font-weight: 500;
+    color: #333;
+    font-size: 48px;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-    height: 32rem;
+    height: 28rem;
     background-color: #777;
 }
 .carousel-item > img {
@@ -39,25 +49,61 @@ body {
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0rem;
     text-align: center;
 }
 .marketing h2 {
-    font-weight: 400;
+    font-weight: 600;
+    color: #333;
 }
 
 /* Featurettes
   ------------------------- */
-
+.featurette {
+    margin: 0.0rem 0;
+}
 .featurette-divider {
-    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+    margin: 0rem 0;
+    border-width: 3px;
+    border-style:double;
+    border-color: #a3a29c;
+}
+
+.featurette-wood {
+    background-color: #f5f5dc;
+}
+
+.featurette-plastic {
+    background-color: #dceef5;
+}
+
+.featurette-bio {
+    background-color: #def5dc;
 }
 
 /* Thin out the marketing headings */
 .featurette-heading {
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.05rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+    color: #333;
+    padding-bottom: 1rem;
+}
+
+.text-muted {
+    font-size: 1.2rem;
+}
+
+.featurette-image {
+    //width: 100%;
+    max-width: 60%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+.featurette .lead {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* RESPONSIVE CSS
@@ -68,19 +114,19 @@ body {
     .carousel-caption p {
         margin-bottom: 1.25rem;
         font-size: 1.25rem;
-        line-height: 1.4;
+        line-height: 1.6;
     }
 
     .featurette-heading {
-        font-size: 50px;
+        font-size: 3rem;
     }
     .text-muted {
-        font-size: 30px;
+        font-size: 1.5rem;
     }
 }
 
 @media (min-width: 62em) {
     .featurette-heading {
-        margin-top: 7rem;
+        margin-top: 3rem;
     }
 }
