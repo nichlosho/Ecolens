@@ -6,7 +6,7 @@ var expect = chai.expect;
 
 chai.use(chaiHttp);
 
-var baseUrl = "https://ecolens.azurewebsites.net/";
+var baseUrl = "https://ecolens.onrender.com";
 
 describe("Test Post Multiple Products API call result", function () {
   var requestResult;
@@ -15,7 +15,7 @@ describe("Test Post Multiple Products API call result", function () {
   var products = [
     {
       _id: '665cc6673dc7feb078bef02f',
-     
+
       name: "Black Eyeglasses",
       description: "This is a wooden based, black frame and gray lens eyeglasses",
       price: 29.99,
@@ -45,8 +45,8 @@ describe("Test Post Multiple Products API call result", function () {
         prescriptionType: "None"
       },
       image: "https://media.istockphoto.com/id/1190208287/photo/blue-light-blocking-glasses-with-yellow-lenses-and-modern-trendy-stile-on-white-background.jpg?s=1024x1024&w=is&k=20&c=lfecZUIOHTl7zyJJublog7sowGvxA0tzuSH_hwolZbc="
-      
-   
+
+
     },
     {
       _id:'665cc6673dc7feb078bef031',
@@ -63,11 +63,11 @@ describe("Test Post Multiple Products API call result", function () {
         prescriptionType: "None"
       },
       image: "https://media.istockphoto.com/id/1177608611/photo/isolated-image-of-two-blue-light-blocking-glasses-on-a-white-background-health-good-sleeping.jpg?s=612x612&w=0&k=20&c=Ivh4LUGbM32azp9JRwHPtuA-prFz9wIlww7U0dnVMNA="
-      
+
     }
   ];
 
-  
+
   before(function (done) {
     this.timeout(30000);
     // Delete existing products before re-insertion
@@ -103,7 +103,7 @@ describe("Test Post Multiple Products API call result", function () {
   });
 
   it("Should return a success status", function () {
-    expect(response).to.have.status(200);
+    expect(response).to.have.status(201);
   });
 
   it("The elements in the array have the expected properties", function () {

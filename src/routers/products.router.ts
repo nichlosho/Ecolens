@@ -71,30 +71,7 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
             }
         );
 
-        // ----------------------------------- POST -----------------------------------\\
-/*
-        this.router.post('/', async (req: Request, res: Response) => {
-            try {
-                const newProducts = req.body as IProduct[];
-                if (!Array.isArray(newProducts)) {
-                    return res.status(400).json({ error: 'Request body must be an array' });
-                }
-
-                const result = await this.model.insertMany(newProducts);
-
-                if (result) {
-                    res.status(201).json(result); // Ensure response is JSON formatted
-                } else {
-                    res.status(500).json({ error: 'Failed to create new products' });
-                }
-            } catch (error) {
-                console.error('Error creating products:', error);
-                res.status(400).json({ error: error.message });
-            }
-        });
-
-*/
-
+        // ----------------------------------- POST -----------------------------------//
         this.router.post('/', async (req: Request, res: Response) => {
             try {
                 const newProducts = req.body as IProduct[];
@@ -103,7 +80,6 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
                 }
 
                 const result = await this.model.insertMany(newProducts);
-                console.log(result)
                 if (result) {
                     res.status(201).json(result);
                 } else {
@@ -114,10 +90,6 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
                 res.status(400).json({ error: error.message });
             }
         });
-
-        // Other routes for PUT, DELETE, etc. go here
-
-    
 
         // ----------------------------------- PUT -----------------------------------\\
 
