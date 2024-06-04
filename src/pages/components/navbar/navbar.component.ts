@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
     }
     logoutGoogleUser() {
         this.ssoService.signOutGoogleUser().then(() => {
-            location.reload();
+            location.href = '/';
         });
     }
     openDialog(): void {
