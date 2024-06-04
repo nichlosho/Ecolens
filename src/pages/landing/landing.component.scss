@@ -1,4 +1,4 @@
-/* GLOBAL STYLES
+ /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
@@ -14,27 +14,27 @@ body {
 
 /* Carousel base class */
 .carousel {
-    margin-bottom: 0rem;
+    margin-bottom: 4rem;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     bottom: 3rem;
     z-index: 10;
-    background-color: rgb(2555, 255, 255, 0.3);
+    background-color: rgb(2555, 255, 255, 0.2);
     padding: 1rem 1rem;
-    color: black;
+    color: white;
 }
 
 .carousel-heading {
     font-weight: 500;
-    color: #333;
+    color: #fff;
     font-size: 48px;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-    height: 28rem;
-    background-color: #777;
+    height: 32rem;
+    background-color: #090000;
 }
 .carousel-item > img {
     position: absolute;
@@ -42,6 +42,7 @@ body {
     left: 0;
     min-width: 100%;
     height: 32rem;
+
 }
 
 /* MARKETING CONTENT
@@ -49,62 +50,37 @@ body {
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
-    margin-bottom: 0rem;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 .marketing h2 {
-    font-weight: 600;
-    color: #333;
+    font-weight: 400;
 }
 
 /* Featurettes
   ------------------------- */
-.featurette {
-    margin: 0.0rem 0;
-}
+
 .featurette-divider {
-    margin: 0rem 0;
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
     border-width: 3px;
-    border-style:double;
-    border-color: #a3a29c;
-}
-
-.featurette-wood {
-    background-color: #f5f5dc;
-}
-
-.featurette-plastic {
-    background-color: #dceef5;
-}
-
-.featurette-bio {
-    background-color: #def5dc;
 }
 
 /* Thin out the marketing headings */
 .featurette-heading {
-    font-weight: 500;
-    line-height: 2.5rem;
-    color: #333;
-    padding-bottom: 1rem;
-}
-
-.text-muted {
-    font-size: 1.2rem;
-}
-
-.featurette-image {
-    //width: 100%;
-    max-width: 60%;
-    height: auto;
-    border-radius: 10px;
-    display: block;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.05rem;
 }
 
 .featurette .lead {
-    margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+.btn-secondary {
+    background-color: rgba(35, 90, 35, 0.74); 
+    color: white; 
+}
+
 
 /* RESPONSIVE CSS
   -------------------------------------------------- */
@@ -114,19 +90,19 @@ body {
     .carousel-caption p {
         margin-bottom: 1.25rem;
         font-size: 1.25rem;
-        line-height: 1.6;
+        line-height: 1.4;
     }
 
     .featurette-heading {
-        font-size: 3rem;
+        font-size: 50px;
     }
     .text-muted {
-        font-size: 1.5rem;
+        font-size: 30px;
     }
 }
 
 @media (min-width: 62em) {
     .featurette-heading {
-        margin-top: 3rem;
+        margin-top: 7rem;
     }
 }
