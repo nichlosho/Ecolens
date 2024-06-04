@@ -78,7 +78,6 @@ export class App {
                             : `${process.env.SERVER_BASE_URL}${
                                   process.env.BACKEND_PORT || ''
                               }/auth/google/callback`,
-                    scope: ['profile', 'email'],
                 },
                 async (token, tokenSecret, profile, done) => {
                     try {
@@ -150,8 +149,13 @@ export class App {
         };
 
         // Authentication routes
-        this._expressApp.get('/auth/google', passport.authenticate('google'));
-
+        this._expressApp.get(
+            '/auth/google',
+            passport.authenticate('google', {
+                scope: ['profile', 'email'],
+                prompt: 'select_account',
+            })
+        );
         this._expressApp.get(
             '/auth/google/callback',
             corsHeaders,
@@ -168,15 +172,21 @@ export class App {
                 res.status(401).json({ message: 'User not authenticated' });
             }
         });
-
-        this.expressApp.get('/auth/google/logout', (req, res) => {
-            req.logout((err) => {
-                console.log('logging out');
-                if (err) {
-                    console.error('logout error', err);
-                }
-                res.redirect(process.env.FRONT_END_URL);
-            });
+        this.expressApp.get('/auth/google/signOut', corsHeaders, (req, res) => {
+            console.log('logout user', req.user);
+            try {
+                req.logOut(req.user, function (err) {
+                    console.log('logout callback called');
+                    if (err) {
+                        console.log('error', err);
+                        return;
+                    }
+                });
+            } catch (e) {
+                console.log(e);
+            }
+            res.json(req.isAuthenticated());
+            console.log('logout called');
         });
     }
 }
