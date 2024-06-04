@@ -1,6 +1,7 @@
-<body class="bg-light">
-    <div class="container">
-      <div class="py-5 text-center">
+<body>
+  <div class="container-fluid bg-light">
+    <div class="container bg-white p-4">
+      <div class="text-center">
         <img
           class="d-block mx-auto mb-4"
           src="../../../assets/Ecolens-transparent.png"
@@ -9,81 +10,96 @@
           height="160"
         />
       </div>
-  
-      <div class="row">
-        <div class="col-md-8 stepper-container">
+
+      <div class="row justify-content-center">
+        <div class="col-md-8 order-md-1" [ngClass]="{'center-step': stepper.selectedIndex === 2}">
           <mat-horizontal-stepper [linear]="true" #stepper>
+            <!-- Step 1: Address -->
             <mat-step [stepControl]="addressFormGroup">
               <form [formGroup]="addressFormGroup">
                 <ng-template matStepLabel>Address</ng-template>
-                <div class="form-group">
-                  <label for="firstName">First name <span class="text-danger">*</span></label>
-                  <input
-                    matInput
-                    formControlName="firstName"
-                    id="firstName"
-                    required
-                  />
-                  <div *ngIf="addressFormGroup.get('firstName').invalid && addressFormGroup.get('firstName').touched" class="invalid-feedback">
-                    Valid first name is required.
+                <h4 class="mb-3">Billing address</h4>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="firstName">First name <span class="text-danger">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="firstName"
+                      formControlName="firstName"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Valid first name is required.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="lastName">Last name <span class="text-danger">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="lastName"
+                      formControlName="lastName"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Valid last name is required.
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="lastName">Last name <span class="text-danger">*</span></label>
-                  <input
-                    matInput
-                    formControlName="lastName"
-                    id="lastName"
-                    required
-                  />
-                  <div *ngIf="addressFormGroup.get('lastName').invalid && addressFormGroup.get('lastName').touched" class="invalid-feedback">
-                    Valid last name is required.
-                  </div>
-                </div>
-                <div class="form-group">
+
+                <div class="mb-3">
                   <label for="username">Username <span class="text-danger">*</span></label>
                   <input
-                    matInput
-                    formControlName="username"
+                    type="text"
+                    class="form-control"
                     id="username"
+                    formControlName="username"
                     required
                   />
-                  <div *ngIf="addressFormGroup.get('username').invalid && addressFormGroup.get('username').touched" class="invalid-feedback">
+                  <div class="invalid-feedback" style="width: 100%">
                     Your username is required.
                   </div>
                 </div>
-                <div class="form-group">
+
+                <div class="mb-3">
                   <label for="email">Email <span class="text-danger">*</span></label>
                   <input
-                    matInput
-                    formControlName="email"
+                    type="email"
+                    class="form-control"
                     id="email"
+                    formControlName="email"
                     required
                   />
-                  <div *ngIf="addressFormGroup.get('email').invalid && addressFormGroup.get('email').touched" class="invalid-feedback">
+                  <div class="invalid-feedback">
                     Please enter a valid email address for shipping updates.
                   </div>
                 </div>
-                <div class="form-group">
+
+                <div class="mb-3">
                   <label for="address">Address <span class="text-danger">*</span></label>
                   <input
-                    matInput
-                    formControlName="address"
+                    type="text"
+                    class="form-control"
                     id="address"
+                    formControlName="address"
                     required
                   />
-                  <div *ngIf="addressFormGroup.get('address').invalid && addressFormGroup.get('address').touched" class="invalid-feedback">
+                  <div class="invalid-feedback">
                     Please enter your shipping address.
                   </div>
                 </div>
-                <div class="form-group">
+
+                <div class="mb-3">
                   <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
                   <input
-                    matInput
-                    formControlName="address2"
+                    type="text"
+                    class="form-control"
                     id="address2"
+                    formControlName="address2"
                   />
                 </div>
+
                 <div class="row">
                   <div class="col-md-5 mb-3">
                     <label for="country">Country <span class="text-danger">*</span></label>
@@ -118,87 +134,129 @@
                   <div class="col-md-3 mb-3">
                     <label for="zip">Zip <span class="text-danger">*</span></label>
                     <input
-                      type="number"
-                      matInput
-                      formControlName="zip"
+                      type="text"
+                      class="form-control"
                       id="zip"
+                      formControlName="zip"
                       required
                     />
-                    <div *ngIf="addressFormGroup.get('zip').invalid && addressFormGroup.get('zip').touched" class="invalid-feedback">
+                    <div class="invalid-feedback">
                       Zip code required.
                     </div>
                   </div>
                 </div>
-                <div>
-                  <button mat-raised-button matStepperNext class="next-button">Next</button>
-                </div>
+                <button mat-raised-button matStepperNext class="btn btn-primary btn-lg btn-block">Next</button>
               </form>
             </mat-step>
-  
+
+            <!-- Step 2: Payment -->
             <mat-step [stepControl]="paymentFormGroup">
               <form [formGroup]="paymentFormGroup">
                 <ng-template matStepLabel>Payment</ng-template>
-                <div class="form-group">
-                  <label for="ccName">Name on card <span class="text-danger">*</span></label>
-                  <input
-                    matInput
-                    formControlName="ccName"
-                    id="ccName"
-                    required
-                  />
-                  <div *ngIf="paymentFormGroup.get('ccName').invalid && paymentFormGroup.get('ccName').touched" class="invalid-feedback">
-                    Name on card is required.
+                <h4 class="mb-3">Payment</h4>
+                <div class="d-block my-3">
+                  <div class="custom-control custom-radio">
+                    <input
+                      id="credit"
+                      name="paymentMethod"
+                      type="radio"
+                      class="custom-control-input"
+                      formControlName="paymentMethod"
+                      value="credit"
+                      required
+                    />
+                    <label class="custom-control-label" for="credit">Credit card</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input
+                      id="debit"
+                      name="paymentMethod"
+                      type="radio"
+                      class="custom-control-input"
+                      formControlName="paymentMethod"
+                      value="debit"
+                      required
+                    />
+                    <label class="custom-control-label" for="debit">Debit card</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input
+                      id="paypal"
+                      name="paymentMethod"
+                      type="radio"
+                      class="custom-control-input"
+                      formControlName="paymentMethod"
+                      value="paypal"
+                      required
+                    />
+                    <label class="custom-control-label" for="paypal">Paypal</label>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="ccNumber">Credit card number <span class="text-danger">*</span></label>
-                  <input
-                    type="number"
-                    matInput
-                    formControlName="ccNumber"
-                    id="ccNumber"
-                    required
-                  />
-                  <div *ngIf="paymentFormGroup.get('ccNumber').invalid && paymentFormGroup.get('ccNumber').touched" class="invalid-feedback">
-                    Credit card number is required.
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="cc-name">Name on card <span class="text-danger">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-name"
+                      formControlName="ccName"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Name on card is required.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="cc-number">Credit card number <span class="text-danger">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-number"
+                      formControlName="ccNumber"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Credit card number is required.
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="ccExpiration">Expiration <span class="text-danger">*</span></label>
-                  <input
-                    type="number"
-                    matInput
-                    formControlName="ccExpiration"
-                    id="ccExpiration"
-                    required
-                  />
-                  <div *ngIf="paymentFormGroup.get('ccExpiration').invalid && paymentFormGroup.get('ccExpiration').touched" class="invalid-feedback">
-                    Expiration date required.
+                <div class="row">
+                  <div class="col-md-3 mb-3">
+                    <label for="cc-expiration">Expiration <span class="text-danger">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-expiration"
+                      formControlName="ccExpiration"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Expiration date required.
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="cc-cvv">CVV <span class="text-danger">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-cvv"
+                      formControlName="ccCvv"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Security code required.
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="ccCvv">CVV <span class="text-danger">*</span></label>
-                  <input
-                    type="number"
-                    matInput
-                    formControlName="ccCvv"
-                    id="ccCvv"
-                    required
-                  />
-                  <div *ngIf="paymentFormGroup.get('ccCvv').invalid && paymentFormGroup.get('ccCvv').touched" class="invalid-feedback">
-                    Security code required.
-                  </div>
-                </div>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-raised-button matStepperNext class="next-button">Next</button>
-                </div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-raised-button matStepperNext class="btn btn-primary btn-lg btn-block">Next</button>
               </form>
             </mat-step>
-  
+
+            <!-- Step 3: Done -->
             <mat-step>
               <ng-template matStepLabel>Done</ng-template>
-              <div *ngIf="stepper.selectedIndex === 2" class="text-center">
+              <div class="text-center done-step">
                 <p>Your payment is successful.</p>
                 <div class="done-animation">
                   <img src="../../../assets/tick.gif" alt="Tick animation" />
@@ -207,7 +265,6 @@
             </mat-step>
           </mat-horizontal-stepper>
         </div>
-  
         <div class="col-md-4 order-md-2 mb-4" *ngIf="stepper.selectedIndex !== 2">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Your cart</span>
@@ -247,7 +304,6 @@
               <strong>$20</strong>
             </li>
           </ul>
-  
           <form class="card p-2">
             <div class="input-group">
               <input
@@ -263,5 +319,5 @@
         </div>
       </div>
     </div>
-  </body>
-  
+  </div>
+</body>

@@ -1,5 +1,19 @@
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: white;
+}
+
 .container {
-  max-width: 960px;
+  max-width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .invalid-feedback {
@@ -8,17 +22,37 @@
   font-size: 0.875em;
 }
 
+.done-animation {
+  /* Add styles for the done animation */
+}
 
 .mat-form-field {
   width: 100%;
 }
 
 .mat-horizontal-stepper {
-  height: 500px;
+  height: 600px;
 }
 
 .stepper-container {
   animation: fadeIn 0.5s ease-in-out;
+}
+
+.center-step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.done-step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
 }
 
 @keyframes fadeIn {
@@ -34,5 +68,31 @@
   display: block;
   width: 100%;
   font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.no-arrows::-webkit-outer-spin-button,
+.no-arrows::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-arrows {
+  -moz-appearance: textfield;
+}
+.center-step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  flex-direction: column;
+}
+
+.done-step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
 }
