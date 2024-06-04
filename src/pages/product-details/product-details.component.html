@@ -1,12 +1,19 @@
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile
-        ><img *ngIf="product" [src]="product.image" alt="{{ product.name }}"
-    /></mat-grid-tile>
-    <mat-grid-tile
-        ><div *ngIf="product" class="product-container">
-            <h1>{{ product.name }}</h1>
-            <p>{{ product.description }}</p>
-            <p><strong>Price:</strong> ${{ product.price }}</p>
-        </div>
-    </mat-grid-tile>
-</mat-grid-list>
+<body>
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile
+            ><img
+                *ngIf="product"
+                [src]="product.image"
+                alt="{{ product.name }}"
+        /></mat-grid-tile>
+        <mat-grid-tile
+            ><div *ngIf="product" class="product-container">
+                <h1>{{ product.name }}</h1>
+                <p>{{ product.description }}</p>
+                <p><strong>Price:</strong> ${{ product.price }}</p>
+                <a mat-button>Add to cart</a>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <body></body>
+</body>

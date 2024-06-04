@@ -1,6 +1,83 @@
+.detail-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+body {
+    margin: 300px;
+    font-family: "Arial", sans-serif;
+    padding: 0;
+    height: 100%;
+}
+
 .product-container {
+    background-color: #ecdc8215;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 160px;
-    border-radius: 8px;
-    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 800px;
+    margin: auto;
+    margin-right: 20px;
+}
+
+.product-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.product-container h1 {
+    font-size: 28px;
+    color: #333;
+    margin: 1px;
+}
+
+.product-container p {
+    font-size: 22px;
+    color: #667;
+    margin: 1px;
+}
+
+.product-container strong {
+    color: #000000;
+}
+
+mat-grd-tile {
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-grid-tile img {
+    width: 95%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 11px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    ma-grad-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+a[mat-button] {
+    margin-top: 30px;
+    background-color: #bf8d0d50;
+    text-decoration: none;
+    transition: color 0.5s;
+}
+
+a[mat-button]:hover {
+    background-color: bisque;
 }
