@@ -77,7 +77,6 @@ export class UserRouter extends BaseModelRouter<IUser> {
         this.router.post('/', async (req: Request, res: Response) => {
             try {
                 const newUser = req.body as IUser;
-                console.log('post newuser', newUser);
                 const result = await this.model.insertMany(newUser);
 
                 if (result) {

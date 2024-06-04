@@ -31,13 +31,11 @@ export class SsoService {
         }
     }
 
-    public async logoutGoogleUser(): Promise<unknown> {
+    public async signOutGoogleUser(): Promise<void> {
         try {
-            //todo fix me
-            const endpoint = 'auth/google/logout';
+            const endpoint = 'auth/google/signOut';
             const url = this.getFullUrl(endpoint);
-            const response = await this.http.get(url).toPromise();
-            return response;
+            await this.http.get(url, { withCredentials: true }).toPromise();
         } catch (error) {
             console.error('Error logging out:', error);
         }
