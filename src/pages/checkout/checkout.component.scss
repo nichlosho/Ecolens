@@ -1,12 +1,38 @@
 .container {
-    max-width: 960px;
+  max-width: 960px;
+}
+
+.invalid-feedback {
+  color: red;
+  display: block;
+  font-size: 0.875em;
+}
+
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-horizontal-stepper {
+  height: 500px;
+}
+
+.stepper-container {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .border-top { border-top: 1px solid #e5e5e5; }
-  .border-bottom { border-bottom: 1px solid #e5e5e5; }
-  .border-top-gray { border-top-color: #adb5bd; }
-  
-  .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
-  
-  .lh-condensed { line-height: 1.25; }
-  
+  to {
+    opacity: 1;
+  }
+}
+
+.next-button {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
