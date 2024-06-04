@@ -1,11 +1,13 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogActions, MatDialogContent } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatStepperModule } from '@angular/material/stepper';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -28,39 +30,42 @@ import { ProductsComponent } from './products/products.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        NavbarComponent,
-        CartComponent,
-        ProductDetailsComponent,
-        ProductsComponent,
-        CheckoutComponent,
-        NotFoundComponent,
-        SignInComponent,
-        ProfileDialogComponent,
-    ],
-    imports: [
-        BrowserModule,
-        RouterModule.forRoot(routes),
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatCardModule,
-        MatGridListModule,
-        MatMenuModule,
-        MatDialogActions,
-        MatDialogContent,
-        FormsModule,
-    ],
-    providers: [
-        BaseService,
-        ProductService,
-        CartService,
-        UserService,
-        OrderService,
-        SsoService,
-        provideAnimationsAsync(),
-    ],
-    bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    CartComponent,
+    ProductDetailsComponent,
+    ProductsComponent,
+    CheckoutComponent,
+    NotFoundComponent,
+    SignInComponent,
+    ProfileDialogComponent,
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatDialogActions,
+    MatDialogContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatStepperModule,
+    MatInputModule,
+  ],
+  providers: [
+    BaseService,
+    ProductService,
+    CartService,
+    UserService,
+    OrderService,
+    SsoService,
+    provideAnimationsAsync(),
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
