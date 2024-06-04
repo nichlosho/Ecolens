@@ -1,323 +1,429 @@
-<body>
-  <div class="container-fluid bg-light">
+<div>
     <div class="container bg-white p-4">
-      <div class="text-center">
-        <img
-          class="d-block mx-auto mb-4"
-          src="../../../assets/Ecolens-transparent.png"
-          alt=""
-          width="160"
-          height="160"
-        />
-      </div>
-
-      <div class="row justify-content-center">
-        <div class="col-md-8 order-md-1" [ngClass]="{'center-step': stepper.selectedIndex === 2}">
-          <mat-horizontal-stepper [linear]="true" #stepper>
-            <!-- Step 1: Address -->
-            <mat-step [stepControl]="addressFormGroup">
-              <form [formGroup]="addressFormGroup">
-                <ng-template matStepLabel>Address</ng-template>
-                <h4 class="mb-3">Billing address</h4>
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="firstName">First name <span class="text-danger">*</span></label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="firstName"
-                      formControlName="firstName"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Valid first name is required.
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="lastName">Last name <span class="text-danger">*</span></label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="lastName"
-                      formControlName="lastName"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Valid last name is required.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <label for="username">Username <span class="text-danger">*</span></label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="username"
-                    formControlName="username"
-                    required
-                  />
-                  <div class="invalid-feedback" style="width: 100%">
-                    Your username is required.
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <label for="email">Email <span class="text-danger">*</span></label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    formControlName="email"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Please enter a valid email address for shipping updates.
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <label for="address">Address <span class="text-danger">*</span></label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="address"
-                    formControlName="address"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Please enter your shipping address.
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="address2"
-                    formControlName="address2"
-                  />
-                </div>
-
-                <div class="row">
-                  <div class="col-md-5 mb-3">
-                    <label for="country">Country <span class="text-danger">*</span></label>
-                    <select
-                      class="custom-select d-block w-100"
-                      id="country"
-                      formControlName="country"
-                      required
-                    >
-                      <option value="">Choose...</option>
-                      <option>United States</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please select a valid country.
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="state">State <span class="text-danger">*</span></label>
-                    <select
-                      class="custom-select d-block w-100"
-                      id="state"
-                      formControlName="state"
-                      required
-                    >
-                      <option value="">Choose...</option>
-                      <option>California</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please provide a valid state.
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="zip">Zip <span class="text-danger">*</span></label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="zip"
-                      formControlName="zip"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Zip code required.
-                    </div>
-                  </div>
-                </div>
-                <button mat-raised-button matStepperNext class="btn btn-primary btn-lg btn-block">Next</button>
-              </form>
-            </mat-step>
-
-            <!-- Step 2: Payment -->
-            <mat-step [stepControl]="paymentFormGroup">
-              <form [formGroup]="paymentFormGroup">
-                <ng-template matStepLabel>Payment</ng-template>
-                <h4 class="mb-3">Payment</h4>
-                <div class="d-block my-3">
-                  <div class="custom-control custom-radio">
-                    <input
-                      id="credit"
-                      name="paymentMethod"
-                      type="radio"
-                      class="custom-control-input"
-                      formControlName="paymentMethod"
-                      value="credit"
-                      required
-                    />
-                    <label class="custom-control-label" for="credit">Credit card</label>
-                  </div>
-                  <div class="custom-control custom-radio">
-                    <input
-                      id="debit"
-                      name="paymentMethod"
-                      type="radio"
-                      class="custom-control-input"
-                      formControlName="paymentMethod"
-                      value="debit"
-                      required
-                    />
-                    <label class="custom-control-label" for="debit">Debit card</label>
-                  </div>
-                  <div class="custom-control custom-radio">
-                    <input
-                      id="paypal"
-                      name="paymentMethod"
-                      type="radio"
-                      class="custom-control-input"
-                      formControlName="paymentMethod"
-                      value="paypal"
-                      required
-                    />
-                    <label class="custom-control-label" for="paypal">Paypal</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="cc-name">Name on card <span class="text-danger">*</span></label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-name"
-                      formControlName="ccName"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Name on card is required.
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="cc-number">Credit card number <span class="text-danger">*</span></label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-number"
-                      formControlName="ccNumber"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Credit card number is required.
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3 mb-3">
-                    <label for="cc-expiration">Expiration <span class="text-danger">*</span></label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-expiration"
-                      formControlName="ccExpiration"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Expiration date required.
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="cc-cvv">CVV <span class="text-danger">*</span></label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-cvv"
-                      formControlName="ccCvv"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Security code required.
-                    </div>
-                  </div>
-                </div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-raised-button matStepperNext class="btn btn-primary btn-lg btn-block">Next</button>
-              </form>
-            </mat-step>
-
-            <!-- Step 3: Done -->
-            <mat-step>
-              <ng-template matStepLabel>Done</ng-template>
-              <div class="text-center done-step">
-                <p>Your payment is successful.</p>
-                <div class="done-animation">
-                  <img src="../../../assets/tick.gif" alt="Tick animation" />
-                </div>
-              </div>
-            </mat-step>
-          </mat-horizontal-stepper>
+        <div class="text-center">
+            <img
+                class="d-block mx-auto mb-4"
+                src="../../../assets/Ecolens-transparent.png"
+                alt=""
+                width="160"
+                height="160"
+            />
         </div>
-        <div class="col-md-4 order-md-2 mb-4" *ngIf="stepper.selectedIndex !== 2">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Your cart</span>
-            <span class="badge badge-secondary badge-pill">3</span>
-          </h4>
-          <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Product name</h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-              <span class="text-muted">$12</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Second product</h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-              <span class="text-muted">$8</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Third item</h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-              <span class="text-muted">$5</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between bg-light">
-              <div class="text-success">
-                <h6 class="my-0">Promo code</h6>
-                <small>EXAMPLECODE</small>
-              </div>
-              <span class="text-success">-$5</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total (USD)</span>
-              <strong>$20</strong>
-            </li>
-          </ul>
-          <form class="card p-2">
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Promo code"
-              />
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-secondary">Redeem</button>
-              </div>
+
+        <div class="row justify-content-center">
+            <div
+                class="col-md-8 order-md-1"
+                [ngClass]="{ 'center-step': stepper.selectedIndex === 2 }"
+            >
+                <mat-horizontal-stepper [linear]="true" #stepper>
+                    <!-- Step 1: Address -->
+                    <mat-step [stepControl]="addressFormGroup">
+                        <form [formGroup]="addressFormGroup">
+                            <ng-template matStepLabel>Address</ng-template>
+                            <h4 class="mb-3">Billing address</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName"
+                                        >First name
+                                        <span class="text-danger"
+                                            >*</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="firstName"
+                                        formControlName="firstName"
+                                        required
+                                    />
+                                    <div class="invalid-feedback">
+                                        Valid first name is required.
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName"
+                                        >Last name
+                                        <span class="text-danger"
+                                            >*</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="lastName"
+                                        formControlName="lastName"
+                                        required
+                                    />
+                                    <div class="invalid-feedback">
+                                        Valid last name is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="username"
+                                    >Username
+                                    <span class="text-danger">*</span></label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="username"
+                                    formControlName="username"
+                                    required
+                                />
+                                <div
+                                    class="invalid-feedback"
+                                    style="width: 100%"
+                                >
+                                    Your username is required.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email"
+                                    >Email
+                                    <span class="text-danger">*</span></label
+                                >
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="email"
+                                    formControlName="email"
+                                    required
+                                />
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for
+                                    shipping updates.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="address"
+                                    >Address
+                                    <span class="text-danger">*</span></label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="address"
+                                    formControlName="address"
+                                    required
+                                />
+                                <div class="invalid-feedback">
+                                    Please enter your shipping address.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="address2"
+                                    >Address 2
+                                    <span class="text-muted"
+                                        >(Optional)</span
+                                    ></label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="address2"
+                                    formControlName="address2"
+                                />
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <label for="country"
+                                        >Country
+                                        <span class="text-danger"
+                                            >*</span
+                                        ></label
+                                    >
+                                    <select
+                                        class="custom-select d-block w-100"
+                                        id="country"
+                                        formControlName="country"
+                                        required
+                                    >
+                                        <option value="">Choose...</option>
+                                        <option>United States</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid country.
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="state"
+                                        >State
+                                        <span class="text-danger"
+                                            >*</span
+                                        ></label
+                                    >
+                                    <select
+                                        class="custom-select d-block w-100"
+                                        id="state"
+                                        formControlName="state"
+                                        required
+                                    >
+                                        <option value="">Choose...</option>
+                                        <option>California</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid state.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="zip"
+                                        >Zip
+                                        <span class="text-danger"
+                                            >*</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="zip"
+                                        formControlName="zip"
+                                        required
+                                    />
+                                    <div class="invalid-feedback">
+                                        Zip code required.
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                mat-raised-button
+                                matStepperNext
+                                class="btn btn-primary btn-lg btn-block"
+                            >
+                                Next
+                            </button>
+                        </form>
+                    </mat-step>
+
+                    <!-- Step 2: Payment -->
+                    <mat-step [stepControl]="paymentFormGroup">
+                        <form [formGroup]="paymentFormGroup">
+                            <ng-template matStepLabel>Payment</ng-template>
+                            <h4 class="mb-3">Payment</h4>
+                            <div class="d-block my-3">
+                                <div class="custom-control custom-radio">
+                                    <input
+                                        id="credit"
+                                        name="paymentMethod"
+                                        type="radio"
+                                        class="custom-control-input"
+                                        formControlName="paymentMethod"
+                                        value="credit"
+                                        required
+                                    />
+                                    <label
+                                        class="custom-control-label"
+                                        for="credit"
+                                        >Credit card</label
+                                    >
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input
+                                        id="debit"
+                                        name="paymentMethod"
+                                        type="radio"
+                                        class="custom-control-input"
+                                        formControlName="paymentMethod"
+                                        value="debit"
+                                        required
+                                    />
+                                    <label
+                                        class="custom-control-label"
+                                        for="debit"
+                                        >Debit card</label
+                                    >
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input
+                                        id="paypal"
+                                        name="paymentMethod"
+                                        type="radio"
+                                        class="custom-control-input"
+                                        formControlName="paymentMethod"
+                                        value="paypal"
+                                        required
+                                    />
+                                    <label
+                                        class="custom-control-label"
+                                        for="paypal"
+                                        >Paypal</label
+                                    >
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="cc-name"
+                                        >Name on card
+                                        <span class="text-danger"
+                                            >*</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="cc-name"
+                                        formControlName="ccName"
+                                        required
+                                    />
+                                    <div class="invalid-feedback">
+                                        Name on card is required.
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="cc-number"
+                                        >Credit card number
+                                        <span class="text-danger"
+                                            >*</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="cc-number"
+                                        formControlName="ccNumber"
+                                        required
+                                    />
+                                    <div class="invalid-feedback">
+                                        Credit card number is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label for="cc-expiration"
+                                        >Expiration
+                                        <span class="text-danger"
+                                            >*</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="cc-expiration"
+                                        formControlName="ccExpiration"
+                                        required
+                                    />
+                                    <div class="invalid-feedback">
+                                        Expiration date required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="cc-cvv"
+                                        >CVV
+                                        <span class="text-danger"
+                                            >*</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="cc-cvv"
+                                        formControlName="ccCvv"
+                                        required
+                                    />
+                                    <div class="invalid-feedback">
+                                        Security code required.
+                                    </div>
+                                </div>
+                            </div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button
+                                mat-raised-button
+                                matStepperNext
+                                class="btn btn-primary btn-lg btn-block"
+                            >
+                                Next
+                            </button>
+                        </form>
+                    </mat-step>
+
+                    <!-- Step 3: Done -->
+                    <mat-step>
+                        <ng-template matStepLabel>Done</ng-template>
+                        <div class="text-center done-step">
+                            <p>Your payment is successful.</p>
+                            <div class="done-animation">
+                                <img
+                                    src="../../../assets/tick.gif"
+                                    alt="Tick animation"
+                                />
+                            </div>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper>
             </div>
-          </form>
+            <div
+                class="col-md-4 order-md-2 mb-4"
+                *ngIf="stepper.selectedIndex !== 2"
+            >
+                <h4
+                    class="d-flex justify-content-between align-items-center mb-3"
+                >
+                    <span class="text-muted">Your cart</span>
+                    <span class="badge badge-secondary badge-pill">3</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    <li
+                        class="list-group-item d-flex justify-content-between lh-condensed"
+                    >
+                        <div>
+                            <h6 class="my-0">Product name</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$12</span>
+                    </li>
+                    <li
+                        class="list-group-item d-flex justify-content-between lh-condensed"
+                    >
+                        <div>
+                            <h6 class="my-0">Second product</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$8</span>
+                    </li>
+                    <li
+                        class="list-group-item d-flex justify-content-between lh-condensed"
+                    >
+                        <div>
+                            <h6 class="my-0">Third item</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$5</span>
+                    </li>
+                    <li
+                        class="list-group-item d-flex justify-content-between bg-light"
+                    >
+                        <div class="text-success">
+                            <h6 class="my-0">Promo code</h6>
+                            <small>EXAMPLECODE</small>
+                        </div>
+                        <span class="text-success">-$5</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total (USD)</span>
+                        <strong>$20</strong>
+                    </li>
+                </ul>
+                <form class="card p-2">
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Promo code"
+                        />
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-secondary">
+                                Redeem
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</body>
+</div>
