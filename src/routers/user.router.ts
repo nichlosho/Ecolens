@@ -45,7 +45,12 @@ export class UserRouter extends BaseModelRouter<IUser> {
                     }
 
                     const customer = await this.model.find(filter);
-                    res.json(customer);
+                    if (customer) {
+                        res.status(200).json(customer); // Ensure response is JSON formatted
+                    } else {
+                        res.status(404).json({ error: 'customer not found' });
+                    }
+                    
                 } catch (error) {
                     console.error('Error fetching users:', error);
                     res.status(500).json({ error: 'Internal Server Error' });
@@ -60,11 +65,12 @@ export class UserRouter extends BaseModelRouter<IUser> {
                 const customerId = req.params.id;
                 try {
                     const customer = await this.model.findById(customerId);
-                    if (!customer) {
-                        res.status(404).json({ error: 'customer not found' });
+                    if (customer) {
+                        res.status(200).json(customer); // Ensure response is JSON formatted
                     } else {
-                        res.json(customer);
+                        res.status(404).json({ error: 'customer not found' });
                     }
+                    
                 } catch (error) {
                     console.error('Error fetching customer:', error);
                     res.status(500).json({ error: 'Internal Server Error' });

@@ -38,7 +38,12 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
                         );
                     }
                     const products = await this.model.find(filter);
-                    res.json(products);
+                    if (products) {
+                        res.status(200).json();
+                    } else {
+                        res.status(404).json({ error: 'Product not found' });
+                    }
+                    
                 } catch (error) {
                     console.error('Error fetching products:', error);
                     res.status(500).json({ error: 'Internal Server Error' });
@@ -53,11 +58,12 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
                 const productId = req.params.id;
                 try {
                     const product = await this.model.findById(productId);
-                    if (!product) {
-                        res.status(404).json({ error: 'Product not found' });
+                    if (product) {
+                        res.status(200).json();
                     } else {
-                        res.json(product);
+                        res.status(404).json({ error: 'Product not found' });
                     }
+                   
                 } catch (error) {
                     console.error('Error fetching product:', error);
                     res.status(500).json({ error: 'Internal Server Error' });
@@ -65,23 +71,23 @@ export class ProductRouter extends BaseModelRouter<IProduct> {
             }
         );
 
-        // ----------------------------------- POST -----------------------------------\\
-
+        // ----------------------------------- POST -----------------------------------//
         this.router.post('/', async (req: Request, res: Response) => {
             try {
-                const newProduct = req.body as IProduct;
-                const result = await this.model.insertMany(newProduct);
+                const newProducts = req.body as IProduct[];
+                if (!Array.isArray(newProducts)) {
+                    return res.status(400).json({ error: 'Request body must be an array of products' });
+                }
 
+                const result = await this.model.insertMany(newProducts);
                 if (result) {
-                    res.status(201).send(
-                        `Successfully created a new product with result ${result}`
-                    );
+                    res.status(201).json(result);
                 } else {
-                    res.status(500).send('Failed to create new product');
+                    res.status(500).json({ error: 'Failed to create new products' });
                 }
             } catch (error) {
-                console.error(error);
-                res.status(400).send(error.message);
+                console.error('Error creating products:', error);
+                res.status(400).json({ error: error.message });
             }
         });
 
