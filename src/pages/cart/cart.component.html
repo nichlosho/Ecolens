@@ -1,3 +1,20 @@
-<div class="container">
+<div class="container" *ngIf="cart.length == 0">
     <h1>Empty cart items</h1>
+</div>
+<div *ngIf="cart.length > 0">
+    <div class="container">
+        <h1>My cart</h1>
+        <hr />
+    </div>
+    <div class="container" *ngFor="let product of cart">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <p>Price: ${{ product.price }}</p>
+        <p>Inventory Status: {{ product.inventoryStatus }}</p>
+        <p>Category: {{ product.category }}</p>
+        <p>
+            Glasses Info: {{ product.glassesInfo.prescriptionType }} -
+            {{ product.glassesInfo.frameMaterial }}
+        </p>
+    </div>
 </div>

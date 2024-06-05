@@ -6,7 +6,7 @@ import { BaseService } from './base.service';
 export class ProductService extends BaseService {
     public override endpoint = `products`;
 
-    public async getProductById(id: number): Promise<IProduct> {
+    public async getProductById(id: string): Promise<IProduct> {
         try {
             const url = `${this.fullUrl}/${id}`;
             const response = await this.http.get<IProduct>(url).toPromise();
@@ -29,7 +29,6 @@ export class ProductService extends BaseService {
 
     public async createProducts(products: IProduct[]): Promise<IProduct[]> {
         try {
-            
             const response = await this.http
                 .post<IProduct[]>(`${this.fullUrl}`, products)
                 .toPromise();
@@ -39,7 +38,6 @@ export class ProductService extends BaseService {
             throw error;
         }
     }
-
 
     public async getProductsByMaterialType(
         materialType: string

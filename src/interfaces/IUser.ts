@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { IAddress } from './IAddress';
+import { IProduct } from './IProduct';
 
 export interface IUser {
     _id?: mongoose.Types.ObjectId;
@@ -9,7 +10,7 @@ export interface IUser {
     phone?: string;
     address?: IAddress;
     ssoId: string;
-    cartItems: string[];
+    cartItems: IProduct[];
     photo: string;
     creditCard: string;
 }
